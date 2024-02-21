@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace HorseRacing
 {
-    public partial class RaceView : Form
+    public partial class Form1 : Form
     {
-        public RaceView()
+        public Form1()
         {
             InitializeComponent();
         }

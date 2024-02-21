@@ -1,7 +1,7 @@
 ﻿
 namespace HorseRacing
 {
-    partial class RaceView
+    partial class Form1
     {
         /// <summary>
         /// Required designer variable.
