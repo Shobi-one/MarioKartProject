@@ -3,26 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace HorseRacing
 {
     public class Horse
     {
-        private string name { get; set; }
-        private int speed { get; set; }
+        public string Name { get; set; }
+        public int Speed { get; set; }
 
         public Horse(string name, int speed)
         {
-            this.name = name;
-            this.speed = speed;
+            Name = name;
+            Speed = speed;
         }
-
         public static Horse GenerateHorse()
         {
             Random random = new Random();
-            string[] possibleNames = { "Thunder", "Blaze", "Swift", "Shadow", "Spirit" }; // Sample horse names will grab them from file in the future
+            string[] possibleNames = { "Thunder", "Fury", "Lightning", "Strike", "Storm", "Dancer", "Midnight", "Dreamer", "Starlight", "Express", "Moonbeam", "Runner", "Blaze", "Swift", "Shadow", "Spirit", "Fireball" }; // Sample horse names will get from a file in the future
             string name = possibleNames[random.Next(possibleNames.Length)];
-            int speed = random.Next(5, 15);
+            int speed = random.Next(5, 30);
             return new Horse(name, speed);
         }
     }
