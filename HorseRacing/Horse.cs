@@ -11,6 +11,7 @@ namespace HorseRacing
     {
         public string Name { get; set; }
         public int Speed { get; set; }
+        public int SpriteIndex { get; set; }
 
         public Horse(string name, int speed)
         {

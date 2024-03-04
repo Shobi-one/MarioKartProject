@@ -15,6 +15,7 @@ namespace HorseRacing
         private Label lblMoney;
         private Random random;
         private MoneyManager moneyManager;
+        private SpriteRenderer spriteRenderer;
         private string vote;
 
         public frmGame()
@@ -23,6 +24,8 @@ namespace HorseRacing
             random = new Random();
             horseSpeeds = new List<Horse>();
             moneyManager = new MoneyManager(100);
+            Bitmap spriteSheet = Properties.Resources.mario;
+            spriteRenderer = new SpriteRenderer(spriteSheet);
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -165,11 +168,13 @@ namespace HorseRacing
                 // Add PictureBox for horse
                 PictureBox pbHorse = new PictureBox();
                 pbHorse.Name = horse.Name;
-                pbHorse.Image = Properties.Resources.tempHorse;
                 pbHorse.SizeMode = PictureBoxSizeMode.Zoom;
                 pbHorse.Size = new System.Drawing.Size(50, 50);
                 pbHorse.Location = new System.Drawing.Point(10, 70 * i + 15);
                 Controls.Add(pbHorse);
+
+                // Instantiate SpriteRenderer with the sprite sheet
+                spriteRenderer.RenderSprite(pbHorse, horse.SpriteIndex);
 
                 // Add label above the horse
                 Label lblHorseName = new Label();
@@ -196,30 +201,8 @@ namespace HorseRacing
                 };
                 Controls.Add(rbVote);
             }
-
-            // Add btnStart
-            btnStart = new Button();
-            btnStart.Text = "Start";
-            btnStart.Location = new Point(715, 320);
-            btnStart.Click += btnStart_Click;
-            Controls.Add(btnStart);
-
-            // Add btnReset
-            btnReset = new Button();
-            btnReset.Text = "Reset";
-            btnReset.Location = new Point(630, 320);
-            btnReset.Click += btnReset_Click;
-            btnReset.Enabled = false;
-            Controls.Add(btnReset);
-
-            //Add Money label
-            lblMoney = new Label();
-            lblMoney.Text = $"Current money: {moneyManager.Money}";
-            lblMoney.AutoSize = true;
-            lblMoney.Location = new System.Drawing.Point(10, 280);
-            Controls.Add(lblMoney);
         }
     }
- }
+}
 
 
