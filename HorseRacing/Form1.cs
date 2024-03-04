@@ -24,7 +24,7 @@ namespace HorseRacing
             random = new Random();
             horseSpeeds = new List<Horse>();
             moneyManager = new MoneyManager(100);
-            Bitmap spriteSheet = Properties.Resources.mario;
+            Bitmap spriteSheet = Properties.Resources.spritesheet;
             spriteRenderer = new SpriteRenderer(spriteSheet);
         }
 
