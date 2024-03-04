@@ -117,6 +117,9 @@ namespace HorseRacing
 
         private void frmGame_Load(object sender, EventArgs e)
         {
+            this.TopMost = true;
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
             horses = new PictureBox[4];
 
             PlaceHorses();
