@@ -33,6 +33,7 @@ namespace HorseRacing
             this.tick = new System.Windows.Forms.Timer(this.components);
             this.btnStart = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
+            this.lblTest = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // tick
@@ -47,7 +48,6 @@ namespace HorseRacing
             this.btnStart.TabIndex = 1;
             this.btnStart.Text = "Start";
             this.btnStart.UseVisualStyleBackColor = true;
-            this.btnStart.Visible = false;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // btnReset
@@ -59,8 +59,18 @@ namespace HorseRacing
             this.btnReset.TabIndex = 2;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Visible = false;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // lblTest
+            // 
+            this.lblTest.AutoSize = true;
+            this.lblTest.BackColor = System.Drawing.Color.Transparent;
+            this.lblTest.ForeColor = System.Drawing.Color.White;
+            this.lblTest.Location = new System.Drawing.Point(351, 234);
+            this.lblTest.Name = "lblTest";
+            this.lblTest.Size = new System.Drawing.Size(49, 13);
+            this.lblTest.TabIndex = 3;
+            this.lblTest.Text = "TestFont";
             // 
             // frmGame
             // 
@@ -68,12 +78,14 @@ namespace HorseRacing
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(800, 354);
+            this.Controls.Add(this.lblTest);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnStart);
             this.Name = "frmGame";
             this.Text = "HorseGame";
             this.Load += new System.EventHandler(this.frmGame_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -81,6 +93,7 @@ namespace HorseRacing
         private System.Windows.Forms.Timer tick;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.Label lblTest;
     }
 }
 

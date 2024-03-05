@@ -69,5 +69,15 @@ namespace HorseRacing.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] super_mario_kart {
+            get {
+                object obj = ResourceManager.GetObject("super_mario_kart", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

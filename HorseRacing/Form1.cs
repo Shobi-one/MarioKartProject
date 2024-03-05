@@ -16,6 +16,7 @@ namespace HorseRacing
         private Random random;
         private MoneyManager moneyManager;
         private SpriteRenderer spriteRenderer;
+        private Font customFont = new Font("Arial", 12f);
         private string vote;
 
         public frmGame()
@@ -26,6 +27,7 @@ namespace HorseRacing
             moneyManager = new MoneyManager(100);
             Bitmap spriteSheet = Properties.Resources.spritesheet;
             spriteRenderer = new SpriteRenderer(spriteSheet);
+            Font customFont = FontManager.LoadEmbeddedFont(12f);
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -117,6 +119,8 @@ namespace HorseRacing
 
         private void frmGame_Load(object sender, EventArgs e)
         {
+            customFont = FontManager.LoadEmbeddedFont(12f);
+            lblTest.Font = customFont;
             this.TopMost = true;
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
