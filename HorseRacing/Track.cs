@@ -8,10 +8,15 @@ using HorseRacing.Properties;
 
 namespace HorseRacing
 {
-    internal class Track
+    public class Track
     {
-        private Resources Image;
-        private int[] racingTrack;
+        public List<int[]> StartingPositions { get; set; }
+        public Bitmap Background {  get; }
+        public List<int[]> path { get; set; }
 
+        public Track(Bitmap background)
+        {
+            this.Background = background;
+        }
     }
 }

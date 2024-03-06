@@ -8,13 +8,13 @@ using HorseRacing.Properties;
 
 namespace HorseRacing
 {
-    class Game
+    public class Game
     {
-        private Bitmap Background;
+        private Track Track;
 
-        public Game(Bitmap background)
+        public Game(Track track)
         {
-            this.Background = background;
+            this.Track = track;
         }
     }
 }

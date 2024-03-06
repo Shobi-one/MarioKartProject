@@ -34,8 +34,8 @@ namespace HorseRacing
                 background = Resources.rainbowroad;
             }
 
-
-            GameView gameView = new GameView(background);
+            Track track = new Track(background);
+            GameView gameView = new GameView(track);
             gameView.Show();
             this.Hide();
         }

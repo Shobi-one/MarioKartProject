@@ -17,16 +17,16 @@ namespace HorseRacing
         private Random random;
         private MoneyManager moneyManager;
         private string vote;
-        private Game game;
+        private Game Game;
 
-        public GameView(Bitmap background)
+        public GameView(Track track)
         {
             InitializeComponent();
             random = new Random();
             horseSpeeds = new List<Horse>();
             moneyManager = new MoneyManager(100);
-            game = new Game(background);
-            this.BackgroundImage = background;
+            Game = new Game(track);
+            this.BackgroundImage = track.Background;
 
         }
 
