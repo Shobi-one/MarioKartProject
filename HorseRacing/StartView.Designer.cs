@@ -85,7 +85,7 @@ namespace HorseRacing
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(351, 359);
+            this.btnStart.Location = new System.Drawing.Point(354, 252);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(75, 23);
             this.btnStart.TabIndex = 3;
