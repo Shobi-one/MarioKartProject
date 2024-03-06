@@ -13,8 +13,6 @@ namespace HorseRacing
 {
     public partial class MapSelectView : Form
     {
-        public StartView()
-
         private bool mouseDown;
         private Point lastLocation;
         private SoundManager soundManager;
@@ -30,9 +28,6 @@ namespace HorseRacing
             soundManager.PlaySound("MenuMusic");
             this.RaceType = raceType;
         }
-
-        private bool mouseDown;
-        private Point lastLocation;
 
         private void btnStart_Click(object sender, System.EventArgs e)
         {
@@ -75,7 +70,6 @@ namespace HorseRacing
             rdbBowsersCastle.Checked = false;
             rdbRainbowRoad.Checked = false;
         }
-
         private void pboxChocoIsland_Click(object sender, System.EventArgs e)
         {
             rdbMariocircuit.Checked = false;
@@ -83,7 +77,6 @@ namespace HorseRacing
             rdbBowsersCastle.Checked = false;
             rdbRainbowRoad.Checked = false;
         }
-
         private void pboxBowsersCastle_Click(object sender, System.EventArgs e)
         {
             rdbMariocircuit.Checked = false;
@@ -91,7 +84,6 @@ namespace HorseRacing
             rdbBowsersCastle.Checked = true;
             rdbRainbowRoad.Checked = false;
         }
-
         private void pboxRainbowRoad_Click(object sender, System.EventArgs e)
         {
             rdbMariocircuit.Checked = false;
@@ -99,6 +91,8 @@ namespace HorseRacing
             rdbBowsersCastle.Checked = false;
             rdbRainbowRoad.Checked = true;
         }
+        
+        
         private void MapSelectView_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -119,20 +113,13 @@ namespace HorseRacing
             }
         }
 
-        }
+        
         private void MapSelectView_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
         }
 
-        private void Start(object sender, EventArgs e)
-        {
-            int raceType = 0;
-            if (sender == btnGrandPrix)
-                raceType = 1;
-            this.Hide();
-            new MapSelectView(raceType).Show();
-
+        
         private void trackPicker_Enter(object sender, System.EventArgs e)
         {
             lblChoose.Font = customFontHeader;
