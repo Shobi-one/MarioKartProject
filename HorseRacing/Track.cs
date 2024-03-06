@@ -13,6 +13,7 @@ namespace HorseRacing
         public int[][] StartingPositions { get; set; }
         public Bitmap Background {  get; }
         public List<int[]> Path { get; set; }
+        public SoundManager soundManager;
 
         public Track(int type)
         {

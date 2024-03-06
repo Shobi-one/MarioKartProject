@@ -8,14 +8,19 @@ namespace HorseRacing
     {
         private bool mouseDown;
         private Point lastLocation;
+        private SoundManager soundManager;
 
         public StartView()
         {
             InitializeComponent();
+            soundManager = new SoundManager();
+            soundManager.LoadSound("MenuMusic", "menu.wav", true);
+            soundManager.PlaySound("MenuMusic");
         }
 
         private void btnStart_Click(object sender, System.EventArgs e)
         {
+            soundManager.StopSound("MenuMusic");
             int trackType = 0;
             if (rdbMariocircuit.Checked)
             {
