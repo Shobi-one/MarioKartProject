@@ -121,9 +121,6 @@ namespace HorseRacing
         {
             customFont = FontManager.LoadEmbeddedFont(12f);
             lblTest.Font = customFont;
-            this.TopMost = true;
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.WindowState = FormWindowState.Maximized;
             horses = new PictureBox[4];
 
             PlaceHorses();
