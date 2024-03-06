@@ -35,6 +35,7 @@ namespace HorseRacing
             this.btnReset = new System.Windows.Forms.Button();
             this.lblY = new System.Windows.Forms.Label();
             this.lblX = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // tick
@@ -82,6 +83,15 @@ namespace HorseRacing
             this.lblX.TabIndex = 4;
             this.lblX.Text = "X: ";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(422, 1012);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "label1";
+            // 
             // GameView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -89,6 +99,7 @@ namespace HorseRacing
             this.BackColor = System.Drawing.Color.Gray;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1000, 1200);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblX);
             this.Controls.Add(this.lblY);
             this.Controls.Add(this.btnReset);
@@ -111,6 +122,7 @@ namespace HorseRacing
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Label lblY;
         private System.Windows.Forms.Label lblX;
+        private System.Windows.Forms.Label label1;
     }
 }
 

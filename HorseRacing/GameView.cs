@@ -17,7 +17,7 @@ namespace HorseRacing
         private Random random;
         private MoneyManager moneyManager;
         private SpriteRenderer spriteRenderer;
-        private Font customFont = new Font("Arial", 12f);
+        private Font customFont;
         private string vote;
         private Game Game;
 
@@ -29,7 +29,7 @@ namespace HorseRacing
             moneyManager = new MoneyManager(100);
             Bitmap spriteSheet = Properties.Resources.spritesheet;
             spriteRenderer = new SpriteRenderer(spriteSheet);
-            Font customFont = FontManager.LoadEmbeddedFont(12f);
+            customFont = FontManager.LoadEmbeddedFont(12f);
             Game = new Game(track);
             this.BackgroundImage = track.Background;
 
@@ -130,6 +130,9 @@ namespace HorseRacing
             PlaceHorses();
             btnStart.Enabled = false;
             btnReset.Enabled = false;
+
+            lblX.Font = customFont;
+            lblY.Font = customFont;
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -222,7 +225,9 @@ namespace HorseRacing
                 int deltaY = e.Y - lastLocation.Y;
                 this.Location = new Point(this.Location.X + deltaX, this.Location.Y + deltaY);
             }
-
+            customFont = FontManager.LoadEmbeddedFont(12f);
+            lblX.Font = customFont;
+            lblY.Font = customFont;
 
             lblX.Text = "X: " + e.X.ToString();
             lblY.Text = "Y: " + e.Y.ToString();
