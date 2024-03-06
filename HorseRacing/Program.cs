@@ -16,7 +16,7 @@ namespace HorseRacing
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmGame());
+            Application.Run(new StartView());
         }
     }
 }
