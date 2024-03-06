@@ -12,6 +12,9 @@ namespace HorseRacing
         public Bitmap Track { get; set; }
         public int CharacterID { get; set; }
         public int FirstPlace { get; set; }
+        public int SecondPlace { get; set; }
+        public int ThirdPlace { get; set; }
+        public int FourthPlace { get; set; }
         public int Bet { get; set; }
 
         public Race() { }
@@ -23,5 +26,7 @@ namespace HorseRacing
             FirstPlace = 0;
             Bet = 0;
         }
+
+        
     }
 }
