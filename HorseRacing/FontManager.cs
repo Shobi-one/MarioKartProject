@@ -11,7 +11,7 @@ namespace HorseRacing
         public static Font LoadEmbeddedFont(float size)
         {
             PrivateFontCollection fontCollection = new PrivateFontCollection();
-            string fontFilePath = @"C:\Users\Obi-o\source\repos\HorseRacing\HorseRacing\assets\font\super-mario-kart.ttf"; //for now this is hard coded will change later.
+            string fontFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"assets\font\super-mario-kart.ttf");
 
             if (File.Exists(fontFilePath))
             {
