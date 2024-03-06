@@ -9,6 +9,8 @@ namespace HorseRacing
         private bool mouseDown;
         private Point lastLocation;
         private SoundManager soundManager;
+        private Font customFontHeader = FontManager.LoadEmbeddedFont(16f);
+        private Font customFontSelection = FontManager.LoadEmbeddedFont(8f);
 
         public StartView()
         {
@@ -101,6 +103,20 @@ namespace HorseRacing
         private void StartView_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
+        }
+
+        private void trackPicker_Enter(object sender, System.EventArgs e)
+        {
+            lblChoose.Font = customFontHeader;
+            rdbMariocircuit.Font = customFontSelection;
+            rdbChocoIsland.Font = customFontSelection;
+            rdbBowsersCastle.Font = customFontSelection;
+            rdbRainbowRoad.Font = customFontSelection;
+        }
+
+        private void lblChoose_Click(object sender, System.EventArgs e)
+        {
+
         }
     }
 }
