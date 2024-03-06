@@ -129,12 +129,24 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="assets\sfx\bowser.wav" />
-    <Content Include="assets\sfx\choco.wav" />
+    <Content Include="assets\sfx\bowser.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\sfx\choco.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\sfx\mario.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="assets\sfx\menu.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="assets\sfx\rainbow.wav" />
+    <Content Include="assets\sfx\rainbow.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\sfx\title.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="assets\img\spritesheet.png" />
     <None Include="Resources\spritesheet.png" />
     <Content Include="assets\img\bowsercastle-3.png" />
