@@ -125,7 +125,6 @@ namespace HorseRacing
         private void frmGame_Load(object sender, EventArgs e)
         {
             customFont = FontManager.LoadEmbeddedFont(12f);
-            lblTest.Font = customFont;
             this.TopMost = true;
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
