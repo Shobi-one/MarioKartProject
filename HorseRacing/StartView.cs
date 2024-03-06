@@ -16,25 +16,25 @@ namespace HorseRacing
 
         private void btnStart_Click(object sender, System.EventArgs e)
         {
-            Bitmap background = null;
+            int trackType = 0;
             if (rdbMariocircuit.Checked)
             {
-                background = Resources.mariocircuit_1;
+                trackType = 0;
             }
             else if(rdbChocoIsland.Checked) 
             {
-                background = Resources.chocoisland_1;
+                trackType = 1;
             }
             else if (rdbBowsersCastle.Checked)
             {
-                background = Resources.bowsercastle_3;
+                trackType = 2;
             }
             else if (rdbRainbowRoad.Checked)
             {
-                background = Resources.rainbowroad;
+                trackType = 3;
             }
 
-            Track track = new Track(background);
+            Track track = new Track(trackType);
             GameView gameView = new GameView(track);
             gameView.Show();
             this.Hide();
@@ -90,6 +90,7 @@ namespace HorseRacing
                 int deltaY = e.Y - lastLocation.Y;
                 this.Location = new Point(this.Location.X + deltaX, this.Location.Y + deltaY);
             }
+
         }
 
         private void StartView_MouseUp(object sender, MouseEventArgs e)

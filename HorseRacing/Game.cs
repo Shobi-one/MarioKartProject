@@ -10,7 +10,7 @@ namespace HorseRacing
 {
     public class Game
     {
-        private Track Track;
+        public Track Track { get; set; }
 
         public Game(Track track)
         {

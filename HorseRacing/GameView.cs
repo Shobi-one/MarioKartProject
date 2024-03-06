@@ -173,15 +173,8 @@ namespace HorseRacing
                 pbHorse.Image = Properties.Resources.tempHorse;
                 pbHorse.SizeMode = PictureBoxSizeMode.Zoom;
                 pbHorse.Size = new System.Drawing.Size(50, 50);
-                pbHorse.Location = new System.Drawing.Point(10, 70 * i + 15);
+                pbHorse.Location = new System.Drawing.Point(Game.Track.StartingPositions[i][0], Game.Track.StartingPositions[i][1]);
                 Controls.Add(pbHorse);
-
-                // Add label above the horse
-                Label lblHorseName = new Label();
-                lblHorseName.Text = horse.Name;
-                lblHorseName.AutoSize = true;
-                lblHorseName.Location = new System.Drawing.Point(pbHorse.Left, pbHorse.Top - 13);
-                Controls.Add(lblHorseName);
 
                 horses[i] = pbHorse;
 
@@ -189,7 +182,7 @@ namespace HorseRacing
                 RadioButton rbVote = new RadioButton();
                 rbVote.Text = "Vote";
                 rbVote.AutoSize = true;
-                rbVote.Location = new System.Drawing.Point(pbHorse.Right + 10, pbHorse.Top);
+                rbVote.Location = new System.Drawing.Point(i*100 + 100, 1100);
                 rbVote.CheckedChanged += (s, ev) =>
                 {
                     if (rbVote.Checked)
@@ -246,6 +239,10 @@ namespace HorseRacing
                 int deltaY = e.Y - lastLocation.Y;
                 this.Location = new Point(this.Location.X + deltaX, this.Location.Y + deltaY);
             }
+
+
+            lblX.Text = "X: " + e.X.ToString();
+            lblY.Text = "Y: " + e.Y.ToString();
         }
 
         private void GameView_MouseUp(object sender, MouseEventArgs e)
