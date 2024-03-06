@@ -64,11 +64,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="SoundManager.cs" />
-    <Compile Include="StartView.cs">
+    <Compile Include="MapSelectView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="StartView.Designer.cs">
-      <DependentUpon>StartView.cs</DependentUpon>
+    <Compile Include="MapSelectView.Designer.cs">
+      <DependentUpon>MapSelectView.cs</DependentUpon>
     </Compile>
     <Compile Include="Track.cs" />
     <EmbeddedResource Include="GameView.resx">
@@ -80,8 +80,8 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="StartView.resx">
-      <DependentUpon>StartView.cs</DependentUpon>
+    <EmbeddedResource Include="MapSelectView.resx">
+      <DependentUpon>MapSelectView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="assets\font\super-mario-kart.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -4,12 +4,12 @@ using HorseRacing.Properties;
 
 namespace HorseRacing
 {
-    public partial class StartView : Form
+    public partial class MapSelectView : Form
     {
         private bool mouseDown;
         private Point lastLocation;
 
-        public StartView()
+        public MapSelectView()
         {
             InitializeComponent();
         }
@@ -72,7 +72,7 @@ namespace HorseRacing
             rdbRainbowRoad.Checked = true;
         }
 
-        private void StartView_MouseDown(object sender, MouseEventArgs e)
+        private void MapSelectView_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -81,7 +81,7 @@ namespace HorseRacing
             }
         }
 
-        private void StartView_MouseMove(object sender, MouseEventArgs e)
+        private void MapSelectView_MouseMove(object sender, MouseEventArgs e)
         {
             if (mouseDown)
             {
@@ -93,7 +93,7 @@ namespace HorseRacing
 
         }
 
-        private void StartView_MouseUp(object sender, MouseEventArgs e)
+        private void MapSelectView_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
         }
