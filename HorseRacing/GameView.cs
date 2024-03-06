@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 using System.Threading.Tasks;
+using HorseRacing.Properties;
 
 namespace HorseRacing
 {
-    public partial class frmGame : Form
+    public partial class GameView : Form
     {
         private PictureBox[] horses;
         private List<Horse> horseSpeeds;
@@ -16,13 +17,17 @@ namespace HorseRacing
         private Random random;
         private MoneyManager moneyManager;
         private string vote;
+        private Game game;
 
-        public frmGame()
+        public GameView(Bitmap background)
         {
             InitializeComponent();
             random = new Random();
             horseSpeeds = new List<Horse>();
             moneyManager = new MoneyManager(100);
+            game = new Game(background);
+            this.BackgroundImage = background;
+
         }
 
         private void btnStart_Click(object sender, EventArgs e)

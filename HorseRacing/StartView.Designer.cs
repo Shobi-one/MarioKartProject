@@ -34,18 +34,18 @@ namespace HorseRacing
             this.pboxMarioCircuit = new System.Windows.Forms.PictureBox();
             this.rdbMariocircuit = new System.Windows.Forms.RadioButton();
             this.trackPicker = new System.Windows.Forms.GroupBox();
-            this.pboxChocoIsland = new System.Windows.Forms.PictureBox();
-            this.pboxRainbowRoad = new System.Windows.Forms.PictureBox();
-            this.pboxBowsersCastle = new System.Windows.Forms.PictureBox();
-            this.rdbChocoIsland = new System.Windows.Forms.RadioButton();
-            this.rdbBowsersCastle = new System.Windows.Forms.RadioButton();
-            this.rdbRainbowRoad = new System.Windows.Forms.RadioButton();
             this.btnStart = new System.Windows.Forms.Button();
+            this.rdbRainbowRoad = new System.Windows.Forms.RadioButton();
+            this.rdbBowsersCastle = new System.Windows.Forms.RadioButton();
+            this.rdbChocoIsland = new System.Windows.Forms.RadioButton();
+            this.pboxBowsersCastle = new System.Windows.Forms.PictureBox();
+            this.pboxRainbowRoad = new System.Windows.Forms.PictureBox();
+            this.pboxChocoIsland = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pboxMarioCircuit)).BeginInit();
             this.trackPicker.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pboxChocoIsland)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pboxRainbowRoad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxBowsersCastle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pboxRainbowRoad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pboxChocoIsland)).BeginInit();
             this.SuspendLayout();
             // 
             // pboxMarioCircuit
@@ -57,6 +57,7 @@ namespace HorseRacing
             this.pboxMarioCircuit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pboxMarioCircuit.TabIndex = 0;
             this.pboxMarioCircuit.TabStop = false;
+            this.pboxMarioCircuit.Click += new System.EventHandler(this.pboxMarioCircuit_Click);
             // 
             // rdbMariocircuit
             // 
@@ -86,57 +87,15 @@ namespace HorseRacing
             this.trackPicker.TabIndex = 2;
             this.trackPicker.TabStop = false;
             // 
-            // pboxChocoIsland
+            // btnStart
             // 
-            this.pboxChocoIsland.Image = global::HorseRacing.Properties.Resources.chocoisland_1;
-            this.pboxChocoIsland.Location = new System.Drawing.Point(213, 136);
-            this.pboxChocoIsland.Name = "pboxChocoIsland";
-            this.pboxChocoIsland.Size = new System.Drawing.Size(150, 150);
-            this.pboxChocoIsland.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pboxChocoIsland.TabIndex = 2;
-            this.pboxChocoIsland.TabStop = false;
-            // 
-            // pboxRainbowRoad
-            // 
-            this.pboxRainbowRoad.Image = global::HorseRacing.Properties.Resources.rainbowroad;
-            this.pboxRainbowRoad.Location = new System.Drawing.Point(588, 136);
-            this.pboxRainbowRoad.Name = "pboxRainbowRoad";
-            this.pboxRainbowRoad.Size = new System.Drawing.Size(150, 150);
-            this.pboxRainbowRoad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pboxRainbowRoad.TabIndex = 3;
-            this.pboxRainbowRoad.TabStop = false;
-            // 
-            // pboxBowsersCastle
-            // 
-            this.pboxBowsersCastle.Image = global::HorseRacing.Properties.Resources.bowsercastle_3;
-            this.pboxBowsersCastle.Location = new System.Drawing.Point(401, 136);
-            this.pboxBowsersCastle.Name = "pboxBowsersCastle";
-            this.pboxBowsersCastle.Size = new System.Drawing.Size(150, 150);
-            this.pboxBowsersCastle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pboxBowsersCastle.TabIndex = 4;
-            this.pboxBowsersCastle.TabStop = false;
-            // 
-            // rdbChocoIsland
-            // 
-            this.rdbChocoIsland.AutoSize = true;
-            this.rdbChocoIsland.Location = new System.Drawing.Point(243, 113);
-            this.rdbChocoIsland.Name = "rdbChocoIsland";
-            this.rdbChocoIsland.Size = new System.Drawing.Size(87, 17);
-            this.rdbChocoIsland.TabIndex = 5;
-            this.rdbChocoIsland.TabStop = true;
-            this.rdbChocoIsland.Text = "Choco Island";
-            this.rdbChocoIsland.UseVisualStyleBackColor = true;
-            // 
-            // rdbBowsersCastle
-            // 
-            this.rdbBowsersCastle.AutoSize = true;
-            this.rdbBowsersCastle.Location = new System.Drawing.Point(427, 113);
-            this.rdbBowsersCastle.Name = "rdbBowsersCastle";
-            this.rdbBowsersCastle.Size = new System.Drawing.Size(99, 17);
-            this.rdbBowsersCastle.TabIndex = 6;
-            this.rdbBowsersCastle.TabStop = true;
-            this.rdbBowsersCastle.Text = "Bowser\'s Castle";
-            this.rdbBowsersCastle.UseVisualStyleBackColor = true;
+            this.btnStart.Location = new System.Drawing.Point(351, 359);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(75, 23);
+            this.btnStart.TabIndex = 3;
+            this.btnStart.Text = "Start";
+            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // rdbRainbowRoad
             // 
@@ -149,15 +108,60 @@ namespace HorseRacing
             this.rdbRainbowRoad.Text = "Bowser\'s Castle";
             this.rdbRainbowRoad.UseVisualStyleBackColor = true;
             // 
-            // btnStart
+            // rdbBowsersCastle
             // 
-            this.btnStart.Location = new System.Drawing.Point(351, 359);
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(75, 23);
-            this.btnStart.TabIndex = 3;
-            this.btnStart.Text = "Start";
-            this.btnStart.UseVisualStyleBackColor = true;
-            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            this.rdbBowsersCastle.AutoSize = true;
+            this.rdbBowsersCastle.Location = new System.Drawing.Point(427, 113);
+            this.rdbBowsersCastle.Name = "rdbBowsersCastle";
+            this.rdbBowsersCastle.Size = new System.Drawing.Size(99, 17);
+            this.rdbBowsersCastle.TabIndex = 6;
+            this.rdbBowsersCastle.TabStop = true;
+            this.rdbBowsersCastle.Text = "Bowser\'s Castle";
+            this.rdbBowsersCastle.UseVisualStyleBackColor = true;
+            // 
+            // rdbChocoIsland
+            // 
+            this.rdbChocoIsland.AutoSize = true;
+            this.rdbChocoIsland.Location = new System.Drawing.Point(243, 113);
+            this.rdbChocoIsland.Name = "rdbChocoIsland";
+            this.rdbChocoIsland.Size = new System.Drawing.Size(87, 17);
+            this.rdbChocoIsland.TabIndex = 5;
+            this.rdbChocoIsland.TabStop = true;
+            this.rdbChocoIsland.Text = "Choco Island";
+            this.rdbChocoIsland.UseVisualStyleBackColor = true;
+            // 
+            // pboxBowsersCastle
+            // 
+            this.pboxBowsersCastle.Image = global::HorseRacing.Properties.Resources.bowsercastle_3;
+            this.pboxBowsersCastle.Location = new System.Drawing.Point(401, 136);
+            this.pboxBowsersCastle.Name = "pboxBowsersCastle";
+            this.pboxBowsersCastle.Size = new System.Drawing.Size(150, 150);
+            this.pboxBowsersCastle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pboxBowsersCastle.TabIndex = 4;
+            this.pboxBowsersCastle.TabStop = false;
+            this.pboxBowsersCastle.Click += new System.EventHandler(this.pboxBowsersCastle_Click);
+            // 
+            // pboxRainbowRoad
+            // 
+            this.pboxRainbowRoad.Image = global::HorseRacing.Properties.Resources.rainbowroad;
+            this.pboxRainbowRoad.Location = new System.Drawing.Point(588, 136);
+            this.pboxRainbowRoad.Name = "pboxRainbowRoad";
+            this.pboxRainbowRoad.Size = new System.Drawing.Size(150, 150);
+            this.pboxRainbowRoad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pboxRainbowRoad.TabIndex = 3;
+            this.pboxRainbowRoad.TabStop = false;
+            this.pboxRainbowRoad.Click += new System.EventHandler(this.pboxRainbowRoad_Click);
+            // 
+            // pboxChocoIsland
+            // 
+            this.pboxChocoIsland.Image = global::HorseRacing.Properties.Resources.chocoisland_1;
+            this.pboxChocoIsland.Location = new System.Drawing.Point(213, 136);
+            this.pboxChocoIsland.Name = "pboxChocoIsland";
+            this.pboxChocoIsland.Size = new System.Drawing.Size(150, 150);
+            this.pboxChocoIsland.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pboxChocoIsland.TabIndex = 2;
+            this.pboxChocoIsland.TabStop = false;
+            this.pboxChocoIsland.Click += new System.EventHandler(this.pboxChocoIsland_Click);
             // 
             // StartView
             // 
@@ -170,9 +174,9 @@ namespace HorseRacing
             ((System.ComponentModel.ISupportInitialize)(this.pboxMarioCircuit)).EndInit();
             this.trackPicker.ResumeLayout(false);
             this.trackPicker.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pboxChocoIsland)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pboxRainbowRoad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxBowsersCastle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pboxRainbowRoad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pboxChocoIsland)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -1,7 +1,7 @@
 ﻿
 namespace HorseRacing
 {
-    partial class frmGame
+    partial class GameView
     {
         /// <summary>
         /// Required designer variable.
@@ -62,15 +62,16 @@ namespace HorseRacing
             this.btnReset.Visible = false;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
-            // frmGame
+            // GameView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
-            this.ClientSize = new System.Drawing.Size(800, 354);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ClientSize = new System.Drawing.Size(984, 961);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnStart);
-            this.Name = "frmGame";
+            this.Name = "GameView";
             this.Text = "HorseGame";
             this.Load += new System.EventHandler(this.frmGame_Load);
             this.ResumeLayout(false);
