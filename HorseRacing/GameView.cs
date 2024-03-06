@@ -224,6 +224,34 @@ namespace HorseRacing
             lblMoney.Location = new System.Drawing.Point(10, 280);
             Controls.Add(lblMoney);
         }
+
+        private bool mouseDown;
+        private Point lastLocation;
+
+        private void GameView_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                mouseDown = true;
+                lastLocation = e.Location;
+            }
+        }
+
+        private void GameView_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                // Calculate the new form position based on mouse movement
+                int deltaX = e.X - lastLocation.X;
+                int deltaY = e.Y - lastLocation.Y;
+                this.Location = new Point(this.Location.X + deltaX, this.Location.Y + deltaY);
+            }
+        }
+
+        private void GameView_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
+        }
     }
  }
 

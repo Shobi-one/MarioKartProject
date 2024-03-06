@@ -34,6 +34,7 @@ namespace HorseRacing
             this.pboxMarioCircuit = new System.Windows.Forms.PictureBox();
             this.rdbMariocircuit = new System.Windows.Forms.RadioButton();
             this.trackPicker = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnStart = new System.Windows.Forms.Button();
             this.rdbRainbowRoad = new System.Windows.Forms.RadioButton();
             this.rdbBowsersCastle = new System.Windows.Forms.RadioButton();
@@ -72,6 +73,7 @@ namespace HorseRacing
             // 
             // trackPicker
             // 
+            this.trackPicker.Controls.Add(this.label1);
             this.trackPicker.Controls.Add(this.btnStart);
             this.trackPicker.Controls.Add(this.rdbRainbowRoad);
             this.trackPicker.Controls.Add(this.rdbBowsersCastle);
@@ -86,6 +88,17 @@ namespace HorseRacing
             this.trackPicker.Size = new System.Drawing.Size(776, 426);
             this.trackPicker.TabIndex = 2;
             this.trackPicker.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(105, 51);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(548, 37);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Select the track you would like to play";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnStart
             // 
@@ -169,8 +182,12 @@ namespace HorseRacing
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.trackPicker);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "StartView";
             this.Text = "Pick your track";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.StartView_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.StartView_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.StartView_MouseUp);
             ((System.ComponentModel.ISupportInitialize)(this.pboxMarioCircuit)).EndInit();
             this.trackPicker.ResumeLayout(false);
             this.trackPicker.PerformLayout();
@@ -194,5 +211,6 @@ namespace HorseRacing
         private System.Windows.Forms.RadioButton rdbBowsersCastle;
         private System.Windows.Forms.RadioButton rdbRainbowRoad;
         private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.Label label1;
     }
 }

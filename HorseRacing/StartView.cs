@@ -6,6 +6,9 @@ namespace HorseRacing
 {
     public partial class StartView : Form
     {
+        private bool mouseDown;
+        private Point lastLocation;
+
         public StartView()
         {
             InitializeComponent();
@@ -67,6 +70,31 @@ namespace HorseRacing
             rdbChocoIsland.Checked = false;
             rdbBowsersCastle.Checked = false;
             rdbRainbowRoad.Checked = true;
+        }
+
+        private void StartView_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                mouseDown = true;
+                lastLocation = e.Location;
+            }
+        }
+
+        private void StartView_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                // Calculate the new form position based on mouse movement
+                int deltaX = e.X - lastLocation.X;
+                int deltaY = e.Y - lastLocation.Y;
+                this.Location = new Point(this.Location.X + deltaX, this.Location.Y + deltaY);
+            }
+        }
+
+        private void StartView_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
         }
     }
 }

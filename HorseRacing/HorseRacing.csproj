@@ -99,7 +99,6 @@
     <Content Include="img\chocoisland-1.png" />
     <Content Include="img\mariocircuit-1.png" />
     <Content Include="img\rainbowroad.png" />
-    <Content Include="tempHorse.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />

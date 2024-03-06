@@ -67,13 +67,17 @@ namespace HorseRacing
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(984, 961);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ClientSize = new System.Drawing.Size(1000, 1200);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnStart);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "GameView";
             this.Text = "HorseGame";
             this.Load += new System.EventHandler(this.frmGame_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.GameView_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.GameView_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.GameView_MouseUp);
             this.ResumeLayout(false);
 
         }
