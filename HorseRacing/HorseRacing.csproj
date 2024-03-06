@@ -74,7 +74,7 @@
     <EmbeddedResource Include="GameView.resx">
       <DependentUpon>GameView.cs</DependentUpon>
     </EmbeddedResource>
-	<Compile Include="SpriteRenderer.cs" />
+    <Compile Include="SpriteRenderer.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -83,7 +83,9 @@
     <EmbeddedResource Include="StartView.resx">
       <DependentUpon>StartView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="assets\font\super-mario-kart.ttf" />
+    <EmbeddedResource Include="assets\font\super-mario-kart.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -105,8 +107,6 @@
     <Content Include="assets\img\mariocircuit-1.png" />
     <Content Include="assets\img\rainbowroad.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
