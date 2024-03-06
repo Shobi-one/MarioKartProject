@@ -106,6 +106,12 @@
     <Compile Include="MapSelectView.Designer.cs">
       <DependentUpon>MapSelectView.cs</DependentUpon>
     </Compile>
+    <Compile Include="StartView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StartView.Designer.cs">
+      <DependentUpon>StartView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Track.cs" />
     <EmbeddedResource Include="GameView.resx">
       <DependentUpon>GameView.cs</DependentUpon>
@@ -121,6 +127,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="assets\font\super-mario-kart.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StartView.resx">
+      <DependentUpon>StartView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
