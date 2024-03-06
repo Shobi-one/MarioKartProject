@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HorseRacing
 {
-    class MoneyManager
+    public class MoneyManager
     {
         public double Money { get; private set; }
 

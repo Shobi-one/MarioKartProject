@@ -10,11 +10,18 @@ namespace HorseRacing
 {
     public class Game
     {
-        public Track Track { get; set; }
+        public MoneyManager Balance { get; set; }
+        public List<Race> PreviousRaces { get; set; }
 
-        public Game(Track track)
+
+        public Game(MoneyManager balance)
         {
-            this.Track = track;
+            this.Balance = balance;
+        }
+
+        public void AddRace(Race race)
+        {
+            PreviousRaces.Add(race);
         }
     }
 }

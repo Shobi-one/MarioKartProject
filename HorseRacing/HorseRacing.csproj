@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Game.cs" />
     <Compile Include="FontManager.cs" />
+    <Compile Include="GrandPrix.cs" />
     <Compile Include="Horse.cs" />
     <Compile Include="GameView.cs">
       <SubType>Form</SubType>
@@ -63,12 +64,19 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Race.cs" />
     <Compile Include="SoundManager.cs" />
     <Compile Include="MapSelectView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MapSelectView.Designer.cs">
       <DependentUpon>MapSelectView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StartView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StartView.Designer.cs">
+      <DependentUpon>StartView.cs</DependentUpon>
     </Compile>
     <Compile Include="Track.cs" />
     <EmbeddedResource Include="GameView.resx">
@@ -85,6 +93,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="assets\font\super-mario-kart.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StartView.resx">
+      <DependentUpon>StartView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using HorseRacing.Properties;
 
@@ -8,36 +9,45 @@ namespace HorseRacing
     {
         private bool mouseDown;
         private Point lastLocation;
+        private int RaceType;
 
-        public MapSelectView()
+        public MapSelectView(int raceType)
         {
             InitializeComponent();
+            this.RaceType = raceType;
         }
 
         private void btnStart_Click(object sender, System.EventArgs e)
         {
-            int trackType = 0;
+            Bitmap track;
+
+            // TODO: Implement character selection and betting
+            int characterID = 0;
+            double bet = 0;
+
             if (rdbMariocircuit.Checked)
             {
-                trackType = 0;
+                track = Resources.mariocircuit_1;
             }
             else if(rdbChocoIsland.Checked) 
             {
-                trackType = 1;
+                track = Resources.chocoisland_1;
             }
             else if (rdbBowsersCastle.Checked)
             {
-                trackType = 2;
+                track = Resources.bowsercastle_3;
             }
-            else if (rdbRainbowRoad.Checked)
+            else
             {
-                trackType = 3;
+                track = Resources.rainbowroad;
             }
 
-            Track track = new Track(trackType);
-            GameView gameView = new GameView(track);
-            gameView.Show();
+            Race currentRace = RaceType == 0 ? new Race(track) : new GrandPrix() ;
+            currentRace.CharacterID = characterID;
+            currentRace.Bet = 0;
+
             this.Hide();
+            new GameView(currentRace, RaceType).Show();
         }
 
         private void pboxMarioCircuit_Click(object sender, System.EventArgs e)
@@ -47,7 +57,6 @@ namespace HorseRacing
             rdbBowsersCastle.Checked = false;
             rdbRainbowRoad.Checked = false;
         }
-
         private void pboxChocoIsland_Click(object sender, System.EventArgs e)
         {
             rdbMariocircuit.Checked = false;
@@ -55,7 +64,6 @@ namespace HorseRacing
             rdbBowsersCastle.Checked = false;
             rdbRainbowRoad.Checked = false;
         }
-
         private void pboxBowsersCastle_Click(object sender, System.EventArgs e)
         {
             rdbMariocircuit.Checked = false;
@@ -63,7 +71,6 @@ namespace HorseRacing
             rdbBowsersCastle.Checked = true;
             rdbRainbowRoad.Checked = false;
         }
-
         private void pboxRainbowRoad_Click(object sender, System.EventArgs e)
         {
             rdbMariocircuit.Checked = false;
@@ -71,7 +78,6 @@ namespace HorseRacing
             rdbBowsersCastle.Checked = false;
             rdbRainbowRoad.Checked = true;
         }
-
         private void MapSelectView_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -80,7 +86,6 @@ namespace HorseRacing
                 lastLocation = e.Location;
             }
         }
-
         private void MapSelectView_MouseMove(object sender, MouseEventArgs e)
         {
             if (mouseDown)
@@ -92,7 +97,6 @@ namespace HorseRacing
             }
 
         }
-
         private void MapSelectView_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
