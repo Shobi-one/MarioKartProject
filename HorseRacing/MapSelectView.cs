@@ -1,5 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using HorseRacing.Properties;
 
@@ -7,15 +13,26 @@ namespace HorseRacing
 {
     public partial class MapSelectView : Form
     {
+        public StartView()
+
         private bool mouseDown;
         private Point lastLocation;
+        private SoundManager soundManager;
+        private Font customFontHeader = FontManager.LoadEmbeddedFont(16f);
+        private Font customFontSelection = FontManager.LoadEmbeddedFont(8f);
         private int RaceType;
 
         public MapSelectView(int raceType)
         {
             InitializeComponent();
+            soundManager = new SoundManager();
+            soundManager.LoadSound("MenuMusic", "menu.wav", true);
+            soundManager.PlaySound("MenuMusic");
             this.RaceType = raceType;
         }
+
+        private bool mouseDown;
+        private Point lastLocation;
 
         private void btnStart_Click(object sender, System.EventArgs e)
         {
@@ -25,6 +42,7 @@ namespace HorseRacing
             int characterID = 0;
             double bet = 0;
 
+            soundManager.StopSound("MenuMusic");
             if (rdbMariocircuit.Checked)
             {
                 track = Resources.mariocircuit_1;
@@ -57,6 +75,7 @@ namespace HorseRacing
             rdbBowsersCastle.Checked = false;
             rdbRainbowRoad.Checked = false;
         }
+
         private void pboxChocoIsland_Click(object sender, System.EventArgs e)
         {
             rdbMariocircuit.Checked = false;
@@ -64,6 +83,7 @@ namespace HorseRacing
             rdbBowsersCastle.Checked = false;
             rdbRainbowRoad.Checked = false;
         }
+
         private void pboxBowsersCastle_Click(object sender, System.EventArgs e)
         {
             rdbMariocircuit.Checked = false;
@@ -71,6 +91,7 @@ namespace HorseRacing
             rdbBowsersCastle.Checked = true;
             rdbRainbowRoad.Checked = false;
         }
+
         private void pboxRainbowRoad_Click(object sender, System.EventArgs e)
         {
             rdbMariocircuit.Checked = false;
@@ -86,6 +107,7 @@ namespace HorseRacing
                 lastLocation = e.Location;
             }
         }
+
         private void MapSelectView_MouseMove(object sender, MouseEventArgs e)
         {
             if (mouseDown)
@@ -95,11 +117,34 @@ namespace HorseRacing
                 int deltaY = e.Y - lastLocation.Y;
                 this.Location = new Point(this.Location.X + deltaX, this.Location.Y + deltaY);
             }
+        }
 
         }
         private void MapSelectView_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
+        }
+
+        private void Start(object sender, EventArgs e)
+        {
+            int raceType = 0;
+            if (sender == btnGrandPrix)
+                raceType = 1;
+            this.Hide();
+            new MapSelectView(raceType).Show();
+
+        private void trackPicker_Enter(object sender, System.EventArgs e)
+        {
+            lblChoose.Font = customFontHeader;
+            rdbMariocircuit.Font = customFontSelection;
+            rdbChocoIsland.Font = customFontSelection;
+            rdbBowsersCastle.Font = customFontSelection;
+            rdbRainbowRoad.Font = customFontSelection;
+        }
+
+        private void lblChoose_Click(object sender, System.EventArgs e)
+        {
+
         }
     }
 }

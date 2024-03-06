@@ -31,7 +31,32 @@ namespace HorseRacing
         /// </summary>
         private void InitializeComponent()
         {
-            this.pboxMarioCircuit = new System.Windows.Forms.PictureBox();
+            this.btnRace = new System.Windows.Forms.Button();
+            this.btnGrandPrix = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // btnRace
+            // 
+            this.btnRace.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRace.Location = new System.Drawing.Point(167, 151);
+            this.btnRace.Name = "btnRace";
+            this.btnRace.Size = new System.Drawing.Size(195, 110);
+            this.btnRace.TabIndex = 1;
+            this.btnRace.Text = "Race";
+            this.btnRace.UseVisualStyleBackColor = true;
+            this.btnRace.Click += new System.EventHandler(this.Start);
+            // 
+            // btnGrandPrix
+            // 
+            this.btnGrandPrix.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGrandPrix.Location = new System.Drawing.Point(426, 151);
+            this.btnGrandPrix.Name = "btnGrandPrix";
+            this.btnGrandPrix.Size = new System.Drawing.Size(195, 110);
+            this.btnGrandPrix.TabIndex = 2;
+            this.btnGrandPrix.Text = "Grand Prix";
+            this.btnGrandPrix.UseVisualStyleBackColor = true;
+            this.btnGrandPrix.Click += new System.EventHandler(this.Start);
+
             this.rdbMariocircuit = new System.Windows.Forms.RadioButton();
             this.trackPicker = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,11 +67,14 @@ namespace HorseRacing
             this.pboxBowsersCastle = new System.Windows.Forms.PictureBox();
             this.pboxRainbowRoad = new System.Windows.Forms.PictureBox();
             this.pboxChocoIsland = new System.Windows.Forms.PictureBox();
+            this.pboxMarioCircuit = new System.Windows.Forms.PictureBox();
+            this.lblChoose = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pboxMarioCircuit)).BeginInit();
             this.trackPicker.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pboxBowsersCastle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxRainbowRoad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxChocoIsland)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pboxMarioCircuit)).BeginInit();
             this.SuspendLayout();
             // 
             // pboxMarioCircuit
@@ -63,7 +91,8 @@ namespace HorseRacing
             // rdbMariocircuit
             // 
             this.rdbMariocircuit.AutoSize = true;
-            this.rdbMariocircuit.Location = new System.Drawing.Point(55, 113);
+            this.rdbMariocircuit.ForeColor = System.Drawing.Color.White;
+            this.rdbMariocircuit.Location = new System.Drawing.Point(59, 85);
             this.rdbMariocircuit.Name = "rdbMariocircuit";
             this.rdbMariocircuit.Size = new System.Drawing.Size(83, 17);
             this.rdbMariocircuit.TabIndex = 1;
@@ -73,7 +102,8 @@ namespace HorseRacing
             // 
             // trackPicker
             // 
-            this.trackPicker.Controls.Add(this.label1);
+            this.trackPicker.BackColor = System.Drawing.Color.Transparent;
+            this.trackPicker.BackgroundImage = global::HorseRacing.Properties.Resources.selection;
             this.trackPicker.Controls.Add(this.btnStart);
             this.trackPicker.Controls.Add(this.rdbRainbowRoad);
             this.trackPicker.Controls.Add(this.rdbBowsersCastle);
@@ -83,26 +113,18 @@ namespace HorseRacing
             this.trackPicker.Controls.Add(this.pboxChocoIsland);
             this.trackPicker.Controls.Add(this.pboxMarioCircuit);
             this.trackPicker.Controls.Add(this.rdbMariocircuit);
-            this.trackPicker.Location = new System.Drawing.Point(12, 12);
+            this.trackPicker.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.trackPicker.ForeColor = System.Drawing.Color.Transparent;
+            this.trackPicker.Location = new System.Drawing.Point(13, 58);
             this.trackPicker.Name = "trackPicker";
-            this.trackPicker.Size = new System.Drawing.Size(776, 426);
+            this.trackPicker.Size = new System.Drawing.Size(775, 281);
             this.trackPicker.TabIndex = 2;
             this.trackPicker.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(105, 51);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(548, 37);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Select the track you would like to play";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.trackPicker.Enter += new System.EventHandler(this.trackPicker_Enter);
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(351, 359);
+            this.btnStart.Location = new System.Drawing.Point(354, 252);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(75, 23);
             this.btnStart.TabIndex = 3;
@@ -113,18 +135,20 @@ namespace HorseRacing
             // rdbRainbowRoad
             // 
             this.rdbRainbowRoad.AutoSize = true;
-            this.rdbRainbowRoad.Location = new System.Drawing.Point(616, 113);
+            this.rdbRainbowRoad.ForeColor = System.Drawing.Color.White;
+            this.rdbRainbowRoad.Location = new System.Drawing.Point(566, 85);
             this.rdbRainbowRoad.Name = "rdbRainbowRoad";
-            this.rdbRainbowRoad.Size = new System.Drawing.Size(99, 17);
+            this.rdbRainbowRoad.Size = new System.Drawing.Size(96, 17);
             this.rdbRainbowRoad.TabIndex = 7;
             this.rdbRainbowRoad.TabStop = true;
-            this.rdbRainbowRoad.Text = "Bowser\'s Castle";
+            this.rdbRainbowRoad.Text = "Rainbow Road";
             this.rdbRainbowRoad.UseVisualStyleBackColor = true;
             // 
             // rdbBowsersCastle
             // 
             this.rdbBowsersCastle.AutoSize = true;
-            this.rdbBowsersCastle.Location = new System.Drawing.Point(427, 113);
+            this.rdbBowsersCastle.ForeColor = System.Drawing.Color.White;
+            this.rdbBowsersCastle.Location = new System.Drawing.Point(393, 85);
             this.rdbBowsersCastle.Name = "rdbBowsersCastle";
             this.rdbBowsersCastle.Size = new System.Drawing.Size(99, 17);
             this.rdbBowsersCastle.TabIndex = 6;
@@ -135,7 +159,8 @@ namespace HorseRacing
             // rdbChocoIsland
             // 
             this.rdbChocoIsland.AutoSize = true;
-            this.rdbChocoIsland.Location = new System.Drawing.Point(243, 113);
+            this.rdbChocoIsland.ForeColor = System.Drawing.Color.White;
+            this.rdbChocoIsland.Location = new System.Drawing.Point(232, 85);
             this.rdbChocoIsland.Name = "rdbChocoIsland";
             this.rdbChocoIsland.Size = new System.Drawing.Size(87, 17);
             this.rdbChocoIsland.TabIndex = 5;
@@ -146,7 +171,7 @@ namespace HorseRacing
             // pboxBowsersCastle
             // 
             this.pboxBowsersCastle.Image = global::HorseRacing.Properties.Resources.bowsercastle_3;
-            this.pboxBowsersCastle.Location = new System.Drawing.Point(401, 136);
+            this.pboxBowsersCastle.Location = new System.Drawing.Point(405, 112);
             this.pboxBowsersCastle.Name = "pboxBowsersCastle";
             this.pboxBowsersCastle.Size = new System.Drawing.Size(150, 150);
             this.pboxBowsersCastle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -157,7 +182,7 @@ namespace HorseRacing
             // pboxRainbowRoad
             // 
             this.pboxRainbowRoad.Image = global::HorseRacing.Properties.Resources.rainbowroad;
-            this.pboxRainbowRoad.Location = new System.Drawing.Point(588, 136);
+            this.pboxRainbowRoad.Location = new System.Drawing.Point(571, 112);
             this.pboxRainbowRoad.Name = "pboxRainbowRoad";
             this.pboxRainbowRoad.Size = new System.Drawing.Size(150, 150);
             this.pboxRainbowRoad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -167,8 +192,9 @@ namespace HorseRacing
             // 
             // pboxChocoIsland
             // 
+            this.pboxChocoIsland.BackColor = System.Drawing.Color.Transparent;
             this.pboxChocoIsland.Image = global::HorseRacing.Properties.Resources.chocoisland_1;
-            this.pboxChocoIsland.Location = new System.Drawing.Point(213, 136);
+            this.pboxChocoIsland.Location = new System.Drawing.Point(236, 112);
             this.pboxChocoIsland.Name = "pboxChocoIsland";
             this.pboxChocoIsland.Size = new System.Drawing.Size(150, 150);
             this.pboxChocoIsland.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -176,12 +202,49 @@ namespace HorseRacing
             this.pboxChocoIsland.TabStop = false;
             this.pboxChocoIsland.Click += new System.EventHandler(this.pboxChocoIsland_Click);
             // 
+            // pboxMarioCircuit
+            // 
+            this.pboxMarioCircuit.Image = global::HorseRacing.Properties.Resources.mariocircuit_1;
+            this.pboxMarioCircuit.Location = new System.Drawing.Point(68, 111);
+            this.pboxMarioCircuit.Name = "pboxMarioCircuit";
+            this.pboxMarioCircuit.Size = new System.Drawing.Size(150, 150);
+            this.pboxMarioCircuit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pboxMarioCircuit.TabIndex = 0;
+            this.pboxMarioCircuit.TabStop = false;
+            this.pboxMarioCircuit.Click += new System.EventHandler(this.pboxMarioCircuit_Click);
+            // 
+            // lblChoose
+            // 
+            this.lblChoose.AutoSize = true;
+            this.lblChoose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(72)))), ((int)(((byte)(56)))));
+            this.lblChoose.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChoose.ForeColor = System.Drawing.Color.White;
+            this.lblChoose.Location = new System.Drawing.Point(293, 41);
+            this.lblChoose.Name = "lblChoose";
+            this.lblChoose.Size = new System.Drawing.Size(194, 37);
+            this.lblChoose.TabIndex = 3;
+            this.lblChoose.Text = "Select Track";
+            this.lblChoose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblChoose.Click += new System.EventHandler(this.lblChoose_Click);
+            // 
             // MapSelectView
             // 
             this.AcceptButton = this.btnStart;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnGrandPrix);
+            this.Controls.Add(this.btnRace);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "StartView";
+            this.Text = "StartView";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.StartView_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.StartView_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.StartView_MouseUp);
+
+            this.BackgroundImage = global::HorseRacing.Properties.Resources.background;
+            this.ClientSize = new System.Drawing.Size(800, 400);
+            this.Controls.Add(this.lblChoose);
             this.Controls.Add(this.trackPicker);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MapSelectView";
@@ -195,7 +258,10 @@ namespace HorseRacing
             ((System.ComponentModel.ISupportInitialize)(this.pboxBowsersCastle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxRainbowRoad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxChocoIsland)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pboxMarioCircuit)).EndInit();
+>>>>>>>> coresystems:HorseRacing/MapSelectView.Designer.cs
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -203,6 +269,10 @@ namespace HorseRacing
 
         #endregion
 
+<<<<<<<< HEAD:HorseRacing/StartView.Designer.cs
+        private System.Windows.Forms.Button btnRace;
+        private System.Windows.Forms.Button btnGrandPrix;
+========
         private System.Windows.Forms.RadioButton rdbMariocircuit;
         private System.Windows.Forms.GroupBox trackPicker;
         private System.Windows.Forms.RadioButton rdbChocoIsland;
@@ -212,6 +282,6 @@ namespace HorseRacing
         private System.Windows.Forms.RadioButton rdbBowsersCastle;
         private System.Windows.Forms.RadioButton rdbRainbowRoad;
         private System.Windows.Forms.Button btnStart;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblChoose;
     }
 }

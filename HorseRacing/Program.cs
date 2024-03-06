@@ -26,7 +26,7 @@ namespace HorseRacing
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new StartView());
+            Application.Run(new MapSelectView());
         }
     }
 }
