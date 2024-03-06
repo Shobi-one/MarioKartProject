@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 using System.Threading.Tasks;
+using HorseRacing.Properties;
 
 namespace HorseRacing
 {
-    public partial class frmGame : Form
+    public partial class GameView : Form
     {
         private PictureBox[] horses;
         private List<Horse> horseSpeeds;
@@ -18,8 +19,9 @@ namespace HorseRacing
         private SpriteRenderer spriteRenderer;
         private Font customFont = new Font("Arial", 12f);
         private string vote;
+        private Game Game;
 
-        public frmGame()
+        public GameView(Track track)
         {
             InitializeComponent();
             random = new Random();
@@ -28,6 +30,9 @@ namespace HorseRacing
             Bitmap spriteSheet = Properties.Resources.spritesheet;
             spriteRenderer = new SpriteRenderer(spriteSheet);
             Font customFont = FontManager.LoadEmbeddedFont(12f);
+            Game = new Game(track);
+            this.BackgroundImage = track.Background;
+
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -120,6 +125,9 @@ namespace HorseRacing
         private void frmGame_Load(object sender, EventArgs e)
         {
             customFont = FontManager.LoadEmbeddedFont(12f);
+            this.TopMost = true;
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
             lblTest.Font = customFont;
             horses = new PictureBox[4];
 
@@ -174,18 +182,8 @@ namespace HorseRacing
                 pbHorse.Name = horse.Name;
                 pbHorse.SizeMode = PictureBoxSizeMode.Zoom;
                 pbHorse.Size = new System.Drawing.Size(50, 50);
-                pbHorse.Location = new System.Drawing.Point(10, 70 * i + 15);
+                pbHorse.Location = new System.Drawing.Point(Game.Track.StartingPositions[i][0], Game.Track.StartingPositions[i][1]);
                 Controls.Add(pbHorse);
-
-                // Instantiate SpriteRenderer with the sprite sheet
-                spriteRenderer.RenderSprite(pbHorse, horse.SpriteIndex);
-
-                // Add label above the horse
-                Label lblHorseName = new Label();
-                lblHorseName.Text = horse.Name;
-                lblHorseName.AutoSize = true;
-                lblHorseName.Location = new System.Drawing.Point(pbHorse.Left, pbHorse.Top - 13);
-                Controls.Add(lblHorseName);
 
                 horses[i] = pbHorse;
 
@@ -193,7 +191,7 @@ namespace HorseRacing
                 RadioButton rbVote = new RadioButton();
                 rbVote.Text = "Vote";
                 rbVote.AutoSize = true;
-                rbVote.Location = new System.Drawing.Point(pbHorse.Right + 10, pbHorse.Top);
+                rbVote.Location = new System.Drawing.Point(i*100 + 100, 1100);
                 rbVote.CheckedChanged += (s, ev) =>
                 {
                     if (rbVote.Checked)
@@ -205,6 +203,38 @@ namespace HorseRacing
                 };
                 Controls.Add(rbVote);
             }
+        }
+
+        private bool mouseDown;
+        private Point lastLocation;
+
+        private void GameView_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                mouseDown = true;
+                lastLocation = e.Location;
+            }
+        }
+
+        private void GameView_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                // Calculate the new form position based on mouse movement
+                int deltaX = e.X - lastLocation.X;
+                int deltaY = e.Y - lastLocation.Y;
+                this.Location = new Point(this.Location.X + deltaX, this.Location.Y + deltaY);
+            }
+
+
+            lblX.Text = "X: " + e.X.ToString();
+            lblY.Text = "Y: " + e.Y.ToString();
+        }
+
+        private void GameView_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
         }
     }
 }

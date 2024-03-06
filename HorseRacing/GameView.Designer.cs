@@ -1,7 +1,7 @@
 ﻿
 namespace HorseRacing
 {
-    partial class frmGame
+    partial class GameView
     {
         /// <summary>
         /// Required designer variable.
@@ -33,7 +33,8 @@ namespace HorseRacing
             this.tick = new System.Windows.Forms.Timer(this.components);
             this.btnStart = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
-            this.lblTest = new System.Windows.Forms.Label();
+            this.lblY = new System.Windows.Forms.Label();
+            this.lblX = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // tick
@@ -42,7 +43,7 @@ namespace HorseRacing
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(713, 319);
+            this.btnStart.Location = new System.Drawing.Point(906, 1099);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(75, 23);
             this.btnStart.TabIndex = 1;
@@ -53,7 +54,7 @@ namespace HorseRacing
             // btnReset
             // 
             this.btnReset.Enabled = false;
-            this.btnReset.Location = new System.Drawing.Point(632, 319);
+            this.btnReset.Location = new System.Drawing.Point(825, 1099);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 23);
             this.btnReset.TabIndex = 2;
@@ -61,29 +62,44 @@ namespace HorseRacing
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
-            // lblTest
+            // lblY
             // 
-            this.lblTest.AutoSize = true;
-            this.lblTest.BackColor = System.Drawing.Color.Transparent;
-            this.lblTest.ForeColor = System.Drawing.Color.White;
-            this.lblTest.Location = new System.Drawing.Point(351, 234);
-            this.lblTest.Name = "lblTest";
-            this.lblTest.Size = new System.Drawing.Size(49, 13);
-            this.lblTest.TabIndex = 3;
-            this.lblTest.Text = "TestFont";
+            this.lblY.AutoSize = true;
+            this.lblY.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblY.Location = new System.Drawing.Point(416, 1067);
+            this.lblY.Name = "lblY";
+            this.lblY.Size = new System.Drawing.Size(47, 31);
+            this.lblY.TabIndex = 3;
+            this.lblY.Text = "Y: ";
             // 
-            // frmGame
+            // lblX
+            // 
+            this.lblX.AutoSize = true;
+            this.lblX.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblX.Location = new System.Drawing.Point(273, 1067);
+            this.lblX.Name = "lblX";
+            this.lblX.Size = new System.Drawing.Size(47, 31);
+            this.lblX.TabIndex = 4;
+            this.lblX.Text = "X: ";
+            // 
+            // GameView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
-            this.ClientSize = new System.Drawing.Size(800, 354);
-            this.Controls.Add(this.lblTest);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ClientSize = new System.Drawing.Size(1000, 1200);
+            this.Controls.Add(this.lblX);
+            this.Controls.Add(this.lblY);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnStart);
-            this.Name = "frmGame";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "GameView";
             this.Text = "HorseGame";
             this.Load += new System.EventHandler(this.frmGame_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.GameView_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.GameView_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.GameView_MouseUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -91,9 +107,10 @@ namespace HorseRacing
 
         #endregion
         private System.Windows.Forms.Timer tick;
-        private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnStart;
-        private System.Windows.Forms.Label lblTest;
+        private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.Label lblY;
+        private System.Windows.Forms.Label lblX;
     }
 }
 
