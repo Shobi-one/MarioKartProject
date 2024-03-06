@@ -2,7 +2,7 @@
 
 namespace HorseRacing
 {
-    partial class StartView
+    partial class MapSelectView
     {
         /// <summary>
         /// Required designer variable.
@@ -188,7 +188,7 @@ namespace HorseRacing
             this.lblChoose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblChoose.Click += new System.EventHandler(this.lblChoose_Click);
             // 
-            // StartView
+            // MapSelectView
             // 
             this.AcceptButton = this.btnStart;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -198,11 +198,11 @@ namespace HorseRacing
             this.Controls.Add(this.lblChoose);
             this.Controls.Add(this.trackPicker);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "StartView";
+            this.Name = "MapSelectView";
             this.Text = "Pick your track";
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.StartView_MouseDown);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.StartView_MouseMove);
-            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.StartView_MouseUp);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MapSelectView_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MapSelectView_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MapSelectView_MouseUp);
             this.trackPicker.ResumeLayout(false);
             this.trackPicker.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pboxBowsersCastle)).EndInit();

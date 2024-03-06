@@ -4,7 +4,7 @@ using HorseRacing.Properties;
 
 namespace HorseRacing
 {
-    public partial class StartView : Form
+    public partial class MapSelectView : Form
     {
         private bool mouseDown;
         private Point lastLocation;
@@ -12,7 +12,7 @@ namespace HorseRacing
         private Font customFontHeader = FontManager.LoadEmbeddedFont(16f);
         private Font customFontSelection = FontManager.LoadEmbeddedFont(8f);
 
-        public StartView()
+        public MapSelectView()
         {
             InitializeComponent();
             soundManager = new SoundManager();
@@ -79,7 +79,7 @@ namespace HorseRacing
             rdbRainbowRoad.Checked = true;
         }
 
-        private void StartView_MouseDown(object sender, MouseEventArgs e)
+        private void MapSelectView_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -88,7 +88,7 @@ namespace HorseRacing
             }
         }
 
-        private void StartView_MouseMove(object sender, MouseEventArgs e)
+        private void MapSelectView_MouseMove(object sender, MouseEventArgs e)
         {
             if (mouseDown)
             {
@@ -100,7 +100,7 @@ namespace HorseRacing
 
         }
 
-        private void StartView_MouseUp(object sender, MouseEventArgs e)
+        private void MapSelectView_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
         }
