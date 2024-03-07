@@ -4,16 +4,25 @@ using System.Windows.Forms;
 
 namespace HorseRacing
 {
+    public enum CharacterID
+    {
+        Mario,
+        Luigi,
+        Peach,
+        Bowser
+    }
+
     public class SpriteRenderer
     {
         private Bitmap spriteSheet;
+        private int spritesPerCharacter = 12;
 
         public SpriteRenderer(Bitmap spriteSheet)
         {
             this.spriteSheet = spriteSheet;
         }
 
-        public void RenderSprite(PictureBox pictureBox, int spriteIndex)
+        public void RenderSprite(PictureBox pictureBox, CharacterID characterID, int spriteIndex)
         {
             if (spriteSheet == null)
             {
@@ -24,8 +33,11 @@ namespace HorseRacing
             int spriteWidth = 32;
             int spriteHeight = 32;
             int columns = spriteSheet.Width / spriteWidth;
-            int row = spriteIndex / columns;
-            int column = spriteIndex % columns;
+
+            // Determine row and column based on character and sprite index
+            int characterOffset = (int)characterID * spritesPerCharacter;
+            int row = (characterOffset + spriteIndex) / columns;
+            int column = (characterOffset + spriteIndex) % columns;
 
             // Create a bitmap to hold the extracted sprite
             Bitmap sprite = new Bitmap(spriteWidth, spriteHeight);

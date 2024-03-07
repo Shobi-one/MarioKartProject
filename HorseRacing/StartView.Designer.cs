@@ -30,12 +30,15 @@
         {
             this.btnRace = new System.Windows.Forms.Button();
             this.btnGrandPrix = new System.Windows.Forms.Button();
+            this.logo = new System.Windows.Forms.PictureBox();
+            this.btnExit = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.SuspendLayout();
             // 
             // btnRace
             // 
             this.btnRace.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRace.Location = new System.Drawing.Point(113, 118);
+            this.btnRace.Location = new System.Drawing.Point(80, 266);
             this.btnRace.Name = "btnRace";
             this.btnRace.Size = new System.Drawing.Size(244, 122);
             this.btnRace.TabIndex = 0;
@@ -46,7 +49,7 @@
             // btnGrandPrix
             // 
             this.btnGrandPrix.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGrandPrix.Location = new System.Drawing.Point(465, 118);
+            this.btnGrandPrix.Location = new System.Drawing.Point(483, 266);
             this.btnGrandPrix.Name = "btnGrandPrix";
             this.btnGrandPrix.Size = new System.Drawing.Size(244, 122);
             this.btnGrandPrix.TabIndex = 1;
@@ -54,11 +57,34 @@
             this.btnGrandPrix.UseVisualStyleBackColor = true;
             this.btnGrandPrix.Click += new System.EventHandler(this.Start);
             // 
+            // logo
+            // 
+            this.logo.BackgroundImage = global::HorseRacing.Properties.Resources.logo;
+            this.logo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.logo.Location = new System.Drawing.Point(165, 30);
+            this.logo.Name = "logo";
+            this.logo.Size = new System.Drawing.Size(468, 140);
+            this.logo.TabIndex = 2;
+            this.logo.TabStop = false;
+            // 
+            // btnExit
+            // 
+            this.btnExit.Location = new System.Drawing.Point(691, 76);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(75, 23);
+            this.btnExit.TabIndex = 3;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
             // StartView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackgroundImage = global::HorseRacing.Properties.Resources.start;
+            this.ClientSize = new System.Drawing.Size(800, 400);
+            this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.logo);
             this.Controls.Add(this.btnGrandPrix);
             this.Controls.Add(this.btnRace);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -67,6 +93,7 @@
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.StartView_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.StartView_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.StartView_MouseUp);
+            ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -75,5 +102,7 @@
 
         private System.Windows.Forms.Button btnRace;
         private System.Windows.Forms.Button btnGrandPrix;
+        private System.Windows.Forms.PictureBox logo;
+        private System.Windows.Forms.Button btnExit;
     }
 }

@@ -122,6 +122,21 @@ namespace HorseRacing
         
         private void trackPicker_Enter(object sender, System.EventArgs e)
         {
+            //I have no idea whats going on. The code works, the game works. But there are chances that when trying to load into
+            //The font the program just flat out crashes. I cannot find a way to replicate the bug consistantly.
+            //Hell it doesn't even pick up the fail safe checks. I pray for the love of god this bug won't happen in the presentation...
+            Console.WriteLine("Entering trackPicker_Enter");
+
+            if (customFontHeader == null)
+            {
+                Console.WriteLine("customFontHeader is null");
+            }
+
+            if (customFontSelection == null)
+            {
+                Console.WriteLine("customFontSelection is null");
+            }
+
             lblChoose.Font = customFontHeader;
             rdbMariocircuit.Font = customFontSelection;
             rdbChocoIsland.Font = customFontSelection;

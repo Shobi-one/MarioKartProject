@@ -93,6 +93,16 @@ namespace HorseRacing.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logo {
+            get {
+                object obj = ResourceManager.GetObject("logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap mariocircuit_1 {
             get {
                 object obj = ResourceManager.GetObject("mariocircuit_1", resourceCulture);
@@ -126,6 +136,16 @@ namespace HorseRacing.Properties {
         internal static System.Drawing.Bitmap spritesheet {
             get {
                 object obj = ResourceManager.GetObject("spritesheet", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap start {
+            get {
+                object obj = ResourceManager.GetObject("start", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

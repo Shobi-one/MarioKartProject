@@ -21,7 +21,7 @@ namespace HorseRacing
             else
             {
                 MessageBox.Show("Font file not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null; // Or you can return a default font
+                return null;
             }
         }
     }

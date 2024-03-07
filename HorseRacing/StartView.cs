@@ -12,6 +12,7 @@ namespace HorseRacing
 {
     public partial class StartView : Form
     {
+        private SoundManager soundManager;
         public StartView()
         {
             InitializeComponent();
@@ -19,6 +20,9 @@ namespace HorseRacing
 
         private void Start(object sender, EventArgs e)
         {
+            soundManager = new SoundManager();
+            soundManager.LoadSound("title", "title.wav", true);
+            soundManager.PlaySound("title");
             int raceType = 0;
             if (sender == btnGrandPrix)
                 raceType = 1;
@@ -53,6 +57,11 @@ namespace HorseRacing
         private void StartView_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
