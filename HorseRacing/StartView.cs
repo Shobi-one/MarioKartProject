@@ -29,7 +29,7 @@ namespace HorseRacing
             if (sender == btnGrandPrix)
                 raceType = 1;
             this.Hide();
-            MapSelectView mapSelectView = new MapSelectView(raceType, moneyManager.Money);
+            MapSelectView mapSelectView = new MapSelectView(raceType, moneyManager.Money, CharacterID.Mario);
             mapSelectView.Show();
         }
 
