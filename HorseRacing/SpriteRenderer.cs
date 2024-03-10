@@ -45,6 +45,10 @@ namespace HorseRacing
             // Copy the sprite from the sprite sheet to the new bitmap
             using (Graphics g = Graphics.FromImage(sprite))
             {
+                // Set interpolation mode to high quality
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+
+                // Draw the sprite with interpolation
                 g.DrawImage(spriteSheet, new Rectangle(0, 0, spriteWidth, spriteHeight),
                             new Rectangle(column * spriteWidth, row * spriteHeight, spriteWidth, spriteHeight),
                             GraphicsUnit.Pixel);

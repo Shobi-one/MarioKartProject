@@ -148,5 +148,12 @@ namespace HorseRacing
         {
 
         }
+
+        private void btnBet_Click(object sender, EventArgs e)
+        {
+            CharacterSelectView characterSelectView = new CharacterSelectView(RaceType);
+            characterSelectView.Show();
+            this.Hide();
+        }
     }
 }

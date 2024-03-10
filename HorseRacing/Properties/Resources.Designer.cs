@@ -83,6 +83,16 @@ namespace HorseRacing.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap charselectback {
+            get {
+                object obj = ResourceManager.GetObject("charselectback", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap chocoisland_1 {
             get {
                 object obj = ResourceManager.GetObject("chocoisland_1", resourceCulture);

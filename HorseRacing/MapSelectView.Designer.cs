@@ -42,6 +42,7 @@ namespace HorseRacing
             this.pboxChocoIsland = new System.Windows.Forms.PictureBox();
             this.pboxMarioCircuit = new System.Windows.Forms.PictureBox();
             this.lblChoose = new System.Windows.Forms.Label();
+            this.btnBet = new System.Windows.Forms.Button();
             this.trackPicker.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pboxBowsersCastle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxRainbowRoad)).BeginInit();
@@ -65,6 +66,7 @@ namespace HorseRacing
             // 
             this.trackPicker.BackColor = System.Drawing.Color.Transparent;
             this.trackPicker.BackgroundImage = global::HorseRacing.Properties.Resources.selection;
+            this.trackPicker.Controls.Add(this.btnBet);
             this.trackPicker.Controls.Add(this.btnStart);
             this.trackPicker.Controls.Add(this.rdbRainbowRoad);
             this.trackPicker.Controls.Add(this.rdbBowsersCastle);
@@ -85,6 +87,7 @@ namespace HorseRacing
             // 
             // btnStart
             // 
+            this.btnStart.BackgroundImage = global::HorseRacing.Properties.Resources.background;
             this.btnStart.Location = new System.Drawing.Point(354, 252);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(75, 23);
@@ -188,6 +191,17 @@ namespace HorseRacing
             this.lblChoose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblChoose.Click += new System.EventHandler(this.lblChoose_Click);
             // 
+            // btnBet
+            // 
+            this.btnBet.BackgroundImage = global::HorseRacing.Properties.Resources.background;
+            this.btnBet.Location = new System.Drawing.Point(6, 56);
+            this.btnBet.Name = "btnBet";
+            this.btnBet.Size = new System.Drawing.Size(75, 23);
+            this.btnBet.TabIndex = 8;
+            this.btnBet.Text = "Bet";
+            this.btnBet.UseVisualStyleBackColor = true;
+            this.btnBet.Click += new System.EventHandler(this.btnBet_Click);
+            // 
             // MapSelectView
             // 
             this.AcceptButton = this.btnStart;
@@ -228,5 +242,6 @@ namespace HorseRacing
         private System.Windows.Forms.RadioButton rdbRainbowRoad;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Label lblChoose;
+        private System.Windows.Forms.Button btnBet;
     }
 }

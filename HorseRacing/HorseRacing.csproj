@@ -80,6 +80,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CharacterSelectView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CharacterSelectView.Designer.cs">
+      <DependentUpon>CharacterSelectView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Game.cs" />
     <Compile Include="FontManager.cs" />
     <Compile Include="GrandPrix.cs" />
@@ -113,6 +119,9 @@
       <DependentUpon>StartView.cs</DependentUpon>
     </Compile>
     <Compile Include="Track.cs" />
+    <EmbeddedResource Include="CharacterSelectView.resx">
+      <DependentUpon>CharacterSelectView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GameView.resx">
       <DependentUpon>GameView.cs</DependentUpon>
     </EmbeddedResource>
@@ -149,6 +158,7 @@
     <Content Include="assets\img\menu\background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="assets\img\menu\charselectback.png" />
     <Content Include="assets\img\menu\logo.png" />
     <Content Include="assets\img\menu\selection.png" />
     <Content Include="assets\img\menu\start.png" />
