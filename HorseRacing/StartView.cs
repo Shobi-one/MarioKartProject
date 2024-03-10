@@ -13,21 +13,24 @@ namespace HorseRacing
     public partial class StartView : Form
     {
         private SoundManager soundManager;
+        private MoneyManager moneyManager;
         public StartView()
         {
             InitializeComponent();
+            moneyManager = new MoneyManager(100);
+            soundManager = new SoundManager();
+            soundManager.LoadSound("title", "title.wav", true);
+            soundManager.PlaySound("title");
         }
 
         private void Start(object sender, EventArgs e)
         {
-            soundManager = new SoundManager();
-            soundManager.LoadSound("title", "title.wav", true);
-            soundManager.PlaySound("title");
             int raceType = 0;
             if (sender == btnGrandPrix)
                 raceType = 1;
             this.Hide();
-            new MapSelectView(raceType).Show();
+            MapSelectView mapSelectView = new MapSelectView(raceType, moneyManager.Money);
+            mapSelectView.Show();
         }
 
         private bool mouseDown;

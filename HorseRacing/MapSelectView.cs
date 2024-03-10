@@ -14,19 +14,21 @@ namespace HorseRacing
     public partial class MapSelectView : Form
     {
         private bool mouseDown;
+        private int RaceType;
+        private double betAmount;
         private Point lastLocation;
-        private SoundManager soundManager;
         private Font customFontHeader = FontManager.LoadEmbeddedFont(16f);
         private Font customFontSelection = FontManager.LoadEmbeddedFont(8f);
-        private int RaceType;
+        private SoundManager soundManager;
 
-        public MapSelectView(int raceType)
+        public MapSelectView(int raceType, double betAmount)
         {
             InitializeComponent();
             soundManager = new SoundManager();
             soundManager.LoadSound("MenuMusic", "menu.wav", true);
             soundManager.PlaySound("MenuMusic");
             this.RaceType = raceType;
+            this.betAmount = betAmount;
         }
 
         private void btnStart_Click(object sender, System.EventArgs e)
@@ -35,7 +37,6 @@ namespace HorseRacing
 
             // TODO: Implement character selection and betting
             int characterID = 0;
-            double bet = 0;
 
             soundManager.StopSound("MenuMusic");
             if (rdbMariocircuit.Checked)

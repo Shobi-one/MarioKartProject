@@ -33,13 +33,14 @@ namespace HorseRacing
             this.pboxBack4 = new System.Windows.Forms.PictureBox();
             this.pboxBack3 = new System.Windows.Forms.PictureBox();
             this.pboxBack2 = new System.Windows.Forms.PictureBox();
-            this.btnStart = new System.Windows.Forms.Button();
+            this.btnBet = new System.Windows.Forms.Button();
             this.rdbRainbowRoad = new System.Windows.Forms.RadioButton();
             this.rdbBowsersCastle = new System.Windows.Forms.RadioButton();
             this.rdbChocoIsland = new System.Windows.Forms.RadioButton();
             this.pboxBack1 = new System.Windows.Forms.PictureBox();
             this.rdbMariocircuit = new System.Windows.Forms.RadioButton();
             this.lblChoose = new System.Windows.Forms.Label();
+            this.txtBetAmount = new System.Windows.Forms.TextBox();
             this.trackPicker.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pboxBack4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxBack3)).BeginInit();
@@ -51,10 +52,11 @@ namespace HorseRacing
             // 
             this.trackPicker.BackColor = System.Drawing.Color.Transparent;
             this.trackPicker.BackgroundImage = global::HorseRacing.Properties.Resources.selection;
+            this.trackPicker.Controls.Add(this.txtBetAmount);
             this.trackPicker.Controls.Add(this.pboxBack4);
             this.trackPicker.Controls.Add(this.pboxBack3);
             this.trackPicker.Controls.Add(this.pboxBack2);
-            this.trackPicker.Controls.Add(this.btnStart);
+            this.trackPicker.Controls.Add(this.btnBet);
             this.trackPicker.Controls.Add(this.rdbRainbowRoad);
             this.trackPicker.Controls.Add(this.rdbBowsersCastle);
             this.trackPicker.Controls.Add(this.rdbChocoIsland);
@@ -101,14 +103,16 @@ namespace HorseRacing
             this.pboxBack2.TabIndex = 8;
             this.pboxBack2.TabStop = false;
             // 
-            // btnStart
+            // btnBet
             // 
-            this.btnStart.Location = new System.Drawing.Point(362, 56);
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(75, 23);
-            this.btnStart.TabIndex = 3;
-            this.btnStart.Text = "Start";
-            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnBet.BackgroundImage = global::HorseRacing.Properties.Resources.background;
+            this.btnBet.Location = new System.Drawing.Point(112, 55);
+            this.btnBet.Name = "btnBet";
+            this.btnBet.Size = new System.Drawing.Size(75, 23);
+            this.btnBet.TabIndex = 3;
+            this.btnBet.Text = "Bet";
+            this.btnBet.UseVisualStyleBackColor = true;
+            this.btnBet.Click += new System.EventHandler(this.btnBet_Click);
             // 
             // rdbRainbowRoad
             // 
@@ -182,6 +186,13 @@ namespace HorseRacing
             this.lblChoose.Text = "Bet on Racer";
             this.lblChoose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // txtBetAmount
+            // 
+            this.txtBetAmount.Location = new System.Drawing.Point(6, 56);
+            this.txtBetAmount.Name = "txtBetAmount";
+            this.txtBetAmount.Size = new System.Drawing.Size(100, 20);
+            this.txtBetAmount.TabIndex = 11;
+            // 
             // CharacterSelectView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -207,7 +218,7 @@ namespace HorseRacing
         #endregion
 
         private System.Windows.Forms.GroupBox trackPicker;
-        private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.Button btnBet;
         private System.Windows.Forms.RadioButton rdbRainbowRoad;
         private System.Windows.Forms.RadioButton rdbBowsersCastle;
         private System.Windows.Forms.RadioButton rdbChocoIsland;
@@ -217,5 +228,6 @@ namespace HorseRacing
         private System.Windows.Forms.PictureBox pboxBack4;
         private System.Windows.Forms.PictureBox pboxBack3;
         private System.Windows.Forms.PictureBox pboxBack2;
+        private System.Windows.Forms.TextBox txtBetAmount;
     }
 }
