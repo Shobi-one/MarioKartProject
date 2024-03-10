@@ -16,6 +16,7 @@ namespace HorseRacing
         private SpriteRenderer spriteRenderer;
         private MoneyManager moneyManager;
         private double betAmount;
+        private CharacterID selectedCharacter;
 
         private Font customFontHeader = FontManager.LoadEmbeddedFont(16f);
         private Font customFontSelection = FontManager.LoadEmbeddedFont(8f);
@@ -44,7 +45,7 @@ namespace HorseRacing
                     // Place the bet
                     moneyManager.DeductMoney(betAmount);
                     // Navigate back to MapSelectView and pass the bet amount
-                    MapSelectView mapSelectView = new MapSelectView(1, betAmount);
+                    MapSelectView mapSelectView = new MapSelectView(1, betAmount, selectedCharacter);
                     mapSelectView.Show();
                     this.Hide(); // Hide the current form
                 }
@@ -69,12 +70,35 @@ namespace HorseRacing
 
         private void CharacterSelectView_Load(object sender, EventArgs e)
         {
-            lblChoose.Font = customFontHeader;
+            
         }
 
         private void btnBet_Click(object sender, EventArgs e)
         {
             Bet();
+        }
+
+        private void rdbMariocircuit_CheckedChanged(object sender, EventArgs e)
+        {
+            selectedCharacter = CharacterID.Mario;
+        }
+
+        private void rdbChocoIsland_CheckedChanged(object sender, EventArgs e)
+        {
+            selectedCharacter = CharacterID.Luigi;
+
+        }
+
+        private void rdbBowsersCastle_CheckedChanged(object sender, EventArgs e)
+        {
+            selectedCharacter = CharacterID.Peach;
+
+        }
+
+        private void rdbRainbowRoad_CheckedChanged(object sender, EventArgs e)
+        {
+            selectedCharacter = CharacterID.Bowser;
+
         }
     }
 }

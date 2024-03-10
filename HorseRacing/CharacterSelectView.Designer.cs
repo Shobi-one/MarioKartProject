@@ -125,6 +125,7 @@ namespace HorseRacing
             this.rdbRainbowRoad.TabStop = true;
             this.rdbRainbowRoad.Text = "Bowser";
             this.rdbRainbowRoad.UseVisualStyleBackColor = true;
+            this.rdbRainbowRoad.CheckedChanged += new System.EventHandler(this.rdbRainbowRoad_CheckedChanged);
             // 
             // rdbBowsersCastle
             // 
@@ -137,6 +138,7 @@ namespace HorseRacing
             this.rdbBowsersCastle.TabStop = true;
             this.rdbBowsersCastle.Text = "Peach";
             this.rdbBowsersCastle.UseVisualStyleBackColor = true;
+            this.rdbBowsersCastle.CheckedChanged += new System.EventHandler(this.rdbBowsersCastle_CheckedChanged);
             // 
             // rdbChocoIsland
             // 
@@ -149,6 +151,7 @@ namespace HorseRacing
             this.rdbChocoIsland.TabStop = true;
             this.rdbChocoIsland.Text = "Luigi";
             this.rdbChocoIsland.UseVisualStyleBackColor = true;
+            this.rdbChocoIsland.CheckedChanged += new System.EventHandler(this.rdbChocoIsland_CheckedChanged);
             // 
             // pboxBack1
             // 
@@ -172,6 +175,7 @@ namespace HorseRacing
             this.rdbMariocircuit.TabStop = true;
             this.rdbMariocircuit.Text = "Mario";
             this.rdbMariocircuit.UseVisualStyleBackColor = true;
+            this.rdbMariocircuit.CheckedChanged += new System.EventHandler(this.rdbMariocircuit_CheckedChanged);
             // 
             // lblChoose
             // 

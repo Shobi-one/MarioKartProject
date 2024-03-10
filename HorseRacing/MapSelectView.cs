@@ -16,12 +16,15 @@ namespace HorseRacing
         private bool mouseDown;
         private int RaceType;
         private double betAmount;
+
+        private CharacterID selectedCharacter;
         private Point lastLocation;
+
         private Font customFontHeader = FontManager.LoadEmbeddedFont(16f);
         private Font customFontSelection = FontManager.LoadEmbeddedFont(8f);
         private SoundManager soundManager;
 
-        public MapSelectView(int raceType, double betAmount)
+        public MapSelectView(int raceType, double betAmount, CharacterID selectedCharacter)
         {
             InitializeComponent();
             soundManager = new SoundManager();
@@ -29,14 +32,14 @@ namespace HorseRacing
             soundManager.PlaySound("MenuMusic");
             this.RaceType = raceType;
             this.betAmount = betAmount;
+            this.selectedCharacter = selectedCharacter;
         }
 
         private void btnStart_Click(object sender, System.EventArgs e)
         {
             Bitmap track;
 
-            // TODO: Implement character selection and betting
-            int characterID = 0;
+            int characterID = (int)selectedCharacter;
 
             soundManager.StopSound("MenuMusic");
             if (rdbMariocircuit.Checked)
