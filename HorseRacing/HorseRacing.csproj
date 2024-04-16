@@ -80,12 +80,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="bowsercastle.cs" />
     <Compile Include="CharacterSelectView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CharacterSelectView.Designer.cs">
       <DependentUpon>CharacterSelectView.cs</DependentUpon>
     </Compile>
+    <Compile Include="chocoisland.cs" />
+    <Compile Include="mariocircuit.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="FontManager.cs" />
     <Compile Include="Kart.cs" />
@@ -104,6 +107,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Race.cs" />
+    <Compile Include="rainbowroad.cs" />
     <Compile Include="SoundManager.cs" />
     <Compile Include="MapSelectView.cs">
       <SubType>Form</SubType>
