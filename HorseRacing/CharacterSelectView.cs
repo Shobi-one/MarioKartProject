@@ -15,19 +15,15 @@ namespace HorseRacing
     public partial class CharacterSelectView : Form
     {
         private SpriteRenderer spriteRenderer;
-        private MoneyManager moneyManager;
-        private double betAmount;
         private CharacterID selectedCharacter;
 
         private Font customFontHeader = FontManager.LoadEmbeddedFont(16f);
         private Font customFontSelection = FontManager.LoadEmbeddedFont(8f);
 
-        public CharacterSelectView(int raceType)
+        public CharacterSelectView()
         {
             InitializeComponent();
-            moneyManager = new MoneyManager(100); //intialize the money for now will change later.
-            Bitmap spriteSheet = new Bitmap(Properties.Resources.spritesheet);
-            spriteRenderer = new SpriteRenderer(spriteSheet);
+            spriteRenderer = new SpriteRenderer();
 
             // Render sprites for each character in PictureBoxes
             RenderCharacter(CharacterID.Mario, pboxBack1);
@@ -40,20 +36,21 @@ namespace HorseRacing
             pboxBack3.Location = new Point(404, 111);
             pboxBack4.Location = new Point(571, 111);
         }
-
-        private void Bet()
+        
+        private void btnBet_Click(object sender, EventArgs e)
         {
+            double betAmount;
             if (double.TryParse(txtBetAmount.Text, out betAmount))
             {
                 // Ensure the user has enough money to place the bet
-                if (betAmount <= moneyManager.Money)
+                if (betAmount <= Program.CurrentGame.Balance.Money)
                 {
                     // Place the bet
-                    moneyManager.DeductMoney(betAmount);
-                    // Navigate back to MapSelectView and pass the bet amount
-                    MapSelectView mapSelectView = new MapSelectView(1, betAmount, selectedCharacter);
-                    mapSelectView.Show();
-                    this.Hide(); // Hide the current form
+                    Program.CurrentGame.Balance.DeductMoney(betAmount);
+                    Program.CurrentGame.CurrentRace.SelectedCharacter = selectedCharacter;
+                    Program.CurrentGame.CurrentRace.Bet = betAmount;
+                    Hide();
+                    new GameView().Show();
                 }
                 else
                 {
@@ -73,34 +70,24 @@ namespace HorseRacing
             pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
         }
 
-
         private void CharacterSelectView_Load(object sender, EventArgs e)
         {
-            lblMoneyText.Text += " " + moneyManager.Money; 
+            lblMoneyText.Text += " " + Program.CurrentGame.Balance.Money; 
         }
-
-        private void btnBet_Click(object sender, EventArgs e)
-        {
-            Bet();
-        }
-
         private void rdbMariocircuit_CheckedChanged(object sender, EventArgs e)
         {
             selectedCharacter = CharacterID.Mario;
         }
-
         private void rdbChocoIsland_CheckedChanged(object sender, EventArgs e)
         {
             selectedCharacter = CharacterID.Luigi;
 
         }
-
         private void rdbBowsersCastle_CheckedChanged(object sender, EventArgs e)
         {
             selectedCharacter = CharacterID.Peach;
 
         }
-
         private void rdbRainbowRoad_CheckedChanged(object sender, EventArgs e)
         {
             selectedCharacter = CharacterID.Bowser;

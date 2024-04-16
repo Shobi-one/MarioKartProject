@@ -30,7 +30,7 @@ namespace HorseRacing
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.Mariotick = new System.Windows.Forms.Timer(this.components);
+            this.GameTick = new System.Windows.Forms.Timer(this.components);
             this.btnStart = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.lblY = new System.Windows.Forms.Label();
@@ -39,19 +39,15 @@ namespace HorseRacing
             this.pbPeach = new System.Windows.Forms.PictureBox();
             this.pbLuigi = new System.Windows.Forms.PictureBox();
             this.pbBowser = new System.Windows.Forms.PictureBox();
-            this.stopMario = new System.Windows.Forms.Timer(this.components);
-            this.LuigiTick = new System.Windows.Forms.Timer(this.components);
-            this.PeachTick = new System.Windows.Forms.Timer(this.components);
-            this.BowserTick = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbMario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPeach)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLuigi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBowser)).BeginInit();
             this.SuspendLayout();
             // 
-            // Mariotick
+            // GameTick
             // 
-            this.Mariotick.Tick += new System.EventHandler(this.tick_Tick);
+            this.GameTick.Tick += new System.EventHandler(this.GameTick_tick);
             // 
             // btnStart
             // 
@@ -61,7 +57,6 @@ namespace HorseRacing
             this.btnStart.TabIndex = 1;
             this.btnStart.Text = "Start";
             this.btnStart.UseVisualStyleBackColor = true;
-            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // btnReset
             // 
@@ -72,7 +67,6 @@ namespace HorseRacing
             this.btnReset.TabIndex = 2;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // lblY
             // 
@@ -134,23 +128,6 @@ namespace HorseRacing
             this.pbBowser.TabIndex = 8;
             this.pbBowser.TabStop = false;
             // 
-            // stopMario
-            // 
-            this.stopMario.Interval = 1000;
-            this.stopMario.Tick += new System.EventHandler(this.stop_Tick);
-            // 
-            // LuigiTick
-            // 
-            this.LuigiTick.Tick += new System.EventHandler(this.LuigiTick_Tick);
-            // 
-            // PeachTick
-            // 
-            this.PeachTick.Tick += new System.EventHandler(this.PeachTick_Tick);
-            // 
-            // BowserTick
-            // 
-            this.BowserTick.Tick += new System.EventHandler(this.BowserTick_Tick);
-            // 
             // GameView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -179,11 +156,10 @@ namespace HorseRacing
             ((System.ComponentModel.ISupportInitialize)(this.pbBowser)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
-        private System.Windows.Forms.Timer Mariotick;
+        private System.Windows.Forms.Timer GameTick;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Label lblY;
@@ -192,10 +168,5 @@ namespace HorseRacing
         private System.Windows.Forms.PictureBox pbPeach;
         private System.Windows.Forms.PictureBox pbLuigi;
         private System.Windows.Forms.PictureBox pbBowser;
-        private System.Windows.Forms.Timer stopMario;
-        private System.Windows.Forms.Timer LuigiTick;
-        private System.Windows.Forms.Timer PeachTick;
-        private System.Windows.Forms.Timer BowserTick;
     }
 }
-

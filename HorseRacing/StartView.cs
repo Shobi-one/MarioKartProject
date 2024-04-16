@@ -13,11 +13,9 @@ namespace HorseRacing
     public partial class StartView : Form
     {
         private SoundManager soundManager;
-        private MoneyManager moneyManager;
         public StartView()
         {
             InitializeComponent();
-            moneyManager = new MoneyManager(100);
             soundManager = new SoundManager();
             soundManager.LoadSound("title", "title.wav", true);
             soundManager.PlaySound("title");
@@ -25,12 +23,8 @@ namespace HorseRacing
 
         private void Start(object sender, EventArgs e)
         {
-            int raceType = 0;
-            if (sender == btnGrandPrix)
-                raceType = 1;
-            this.Hide();
-            MapSelectView mapSelectView = new MapSelectView(raceType, moneyManager.Money, CharacterID.Mario);
-            mapSelectView.Show();
+            Hide();
+            new MapSelectView().Show();
         }
 
         private bool mouseDown;
@@ -47,13 +41,11 @@ namespace HorseRacing
 
         private void StartView_MouseMove(object sender, MouseEventArgs e)
         {
-            if (mouseDown)
-            {
-                // Calculate the new form position based on mouse movement
-                int deltaX = e.X - lastLocation.X;
-                int deltaY = e.Y - lastLocation.Y;
-                this.Location = new Point(this.Location.X + deltaX, this.Location.Y + deltaY);
-            }
+            if (!mouseDown) return;
+            // Calculate the new form position based on mouse movement
+            int deltaX = e.X - lastLocation.X;
+            int deltaY = e.Y - lastLocation.Y;
+            this.Location = new Point(this.Location.X + deltaX, this.Location.Y + deltaY);
         }
 
 

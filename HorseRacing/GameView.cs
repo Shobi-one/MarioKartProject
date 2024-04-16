@@ -11,253 +11,105 @@ namespace HorseRacing
 {
     public partial class GameView : Form
     {
+        private List<Kart> karts = new List<Kart>();
+        private List<PictureBox> kartImages = new List<PictureBox>();
+        private Race CurrentRace
+        {
+            get { return Program.CurrentGame.CurrentRace; }
+            set { Program.CurrentGame.CurrentRace = value; }
+        }
+        
         private SpriteRenderer spriteRenderer;
-        private Point marioPosition;
-        private Point luigiPositon;
-        private Point targetPosition;
-
-        private Point lastValidMarioPosition;
-
-        private List<Point> mariopathPoints = new List<Point>();
-        private List<Point> pathPoints = new List<Point>();
-        private List<CharacterID> charactersStopping = new List<CharacterID>();
-
-        private Dictionary<CharacterID, HashSet<Point>> visitedPoints = new Dictionary<CharacterID, HashSet<Point>>();
-
-        private HashSet<Point> marioVisitedPoints = new HashSet<Point>();
-        private HashSet<Point> luigiVisitedPoints = new HashSet<Point>();
-
-        private int marioPointIndex = 0;
-        private int luigiPointIndex = 0;
-
-        private int marioSpeed = 5;
-        private int luigiSpeed = 5;
-
-        private Random random = new Random();
-        private Timer stopTimer = new Timer();
-
-        public GameView(Race race, int raceType)
+        
+        private int[] pointIndex = { 0, 0, 0, 0 };
+        
+        public GameView()
         {
             InitializeComponent();
-            Random random = new Random();
-
-            Bitmap[] tracks = { Resources.mariocircuit_1, Resources.chocoisland_1, Resources.bowsercastle_3, Resources.rainbowroad };
-            Bitmap spriteSheet = new Bitmap(Properties.Resources.spritesheet);
-            spriteRenderer = new SpriteRenderer(spriteSheet);
-
-            lastValidMarioPosition = marioPosition;
-            visitedPoints.Add(CharacterID.Mario, new HashSet<Point>());
-            visitedPoints.Add(CharacterID.Luigi, new HashSet<Point>());
-            visitedPoints.Add(CharacterID.Peach, new HashSet<Point>());
-            visitedPoints.Add(CharacterID.Bowser, new HashSet<Point>());
-
-            marioPosition = new Point(903, 580);
-            mariopathPoints.Add(new Point(903, 350));
-            mariopathPoints.Add(new Point(221, 50));
-            mariopathPoints.Add(new Point(144, 85));
-            mariopathPoints.Add(new Point(70, 222));
-            mariopathPoints.Add(new Point(70, 730));
-            mariopathPoints.Add(new Point(470, 540));
-            mariopathPoints.Add(new Point(722, 872));
-            mariopathPoints.Add(new Point(752, 872));
-            mariopathPoints.Add(new Point(903, 872));
-            mariopathPoints.Add(new Point(903, 580));
-
-            luigiPositon = new Point(935, 600);
-            pathPoints.Add(new Point(935, 350));
-            pathPoints.Add(new Point(221, 50));
-            pathPoints.Add(new Point(144, 85));
-            pathPoints.Add(new Point(70, 222));
-            pathPoints.Add(new Point(70, 730));
-            pathPoints.Add(new Point(470, 540));
-            pathPoints.Add(new Point(722, 872));
-            pathPoints.Add(new Point(752, 872));
-            pathPoints.Add(new Point(903, 872));
-            pathPoints.Add(new Point(903, 580));
-
-
-            targetPosition = mariopathPoints[marioPointIndex];
-
-            this.BackgroundImage = raceType == 0 ? race.Track : tracks[raceType - 1];
-            RenderCharacter(CharacterID.Mario, pbMario);
-            RenderCharacter(CharacterID.Luigi, pbLuigi);
+        
+            spriteRenderer = new SpriteRenderer();
+        
+            RenderCharacters();
+            CreateCharacters();
         }
 
-        private void RenderCharacter(CharacterID characterID, PictureBox pictureBox)
+        private void MoveKarts()
         {
-            spriteRenderer.RenderSprite(pictureBox, characterID, 0);
-            pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            foreach (Kart kart in karts)
+            {
+                
+            }
         }
-
-        private void MarioCircuit()
+        
+        private void MoveKart()
         {
             // Calculate the distance and direction to the target position
-            int deltaX = targetPosition.X - marioPosition.X;
-            int deltaY = targetPosition.Y - marioPosition.Y;
-            double length = Math.Sqrt(deltaX * deltaX + deltaY * deltaY);
-            double directionX = deltaX / length;
-            double directionY = deltaY / length;
-
-            // Move Mario towards the target position
-            marioPosition = new Point(
-                (int)(marioPosition.X + marioSpeed * directionX),
-                (int)(marioPosition.Y + marioSpeed * directionY)
-            );
-            pbMario.Location = marioPosition;
-
-            // Check if Mario has reached the target position
-            if (Math.Abs(marioPosition.X - targetPosition.X) < marioSpeed &&
-                Math.Abs(marioPosition.Y - targetPosition.Y) < marioSpeed)
-            {
-                // Mark the current target position as visited
-                marioVisitedPoints.Add(targetPosition);
-
-                // Move to the next target position if available and not visited
-                for (int i = marioPointIndex + 1; i < mariopathPoints.Count; i++)
-                {
-                    if (!marioVisitedPoints.Contains(mariopathPoints[i]))
-                    {
-                        marioPointIndex = i;
-                        targetPosition = mariopathPoints[marioPointIndex];
-                        break;
-                    }
-                }
-            }
-            CheckForStop(CharacterID.Mario, marioPosition);
-            UpdateCharacters();
+            //
+            // // Move Mario towards the target position
+            // marioPosition = new Point(
+            //     (int)(marioPosition.X + marioSpeed * directionX),
+            //     (int)(marioPosition.Y + marioSpeed * directionY)
+            // );
+            // pbMario.Location = marioPosition;
+            //
+            // // Check if Mario has reached the target position
+            // if (Math.Abs(marioPosition.X - targetPosition.X) < marioSpeed &&
+            //     Math.Abs(marioPosition.Y - targetPosition.Y) < marioSpeed)
+            // {
+            //     // Mark the current target position as visited
+            //     marioVisitedPoints.Add(targetPosition);
+            //
+            //     // Move to the next target position if available and not visited
+            //     for (int i = marioPointIndex + 1; i < mariopathPoints.Count; i++)
+            //     {
+            //         if (!marioVisitedPoints.Contains(mariopathPoints[i]))
+            //         {
+            //             marioPointIndex = i;
+            //             targetPosition = mariopathPoints[marioPointIndex];
+            //             break;
+            //         }
+            //     }
+            // }
         }
-
-
-        //same logic as mario
-        private void LuigiCircuit()
+        
+        
+        private void GameTick_tick(object sender, EventArgs e)
         {
-            int deltaX = targetPosition.X - luigiPositon.X;
-            int deltaY = targetPosition.Y - luigiPositon.Y;
-            double length = Math.Sqrt(deltaX * deltaX + deltaY * deltaY);
-            double directionX = deltaX / length;
-            double directionY = deltaY / length;
-
-            luigiPositon = new Point(
-                (int)(luigiPositon.X + luigiSpeed * directionX),
-                (int)(luigiPositon.Y + luigiSpeed * directionY)
-            );
-            pbLuigi.Location = luigiPositon;
-
-            if (Math.Abs(luigiPositon.X - targetPosition.X) < luigiSpeed &&
-                Math.Abs(luigiPositon.Y - targetPosition.Y) < luigiSpeed)
-            {
-                luigiVisitedPoints.Add(targetPosition);
-
-                for (int i = luigiPointIndex + 1; i < pathPoints.Count; i++)
-                {
-                    if (!luigiVisitedPoints.Contains(pathPoints[i]))
-                    {
-                        luigiPointIndex = i;
-                        targetPosition = pathPoints[luigiPointIndex];
-                        break;
-                    }
-                }
-            }
-
-            CheckForStop(CharacterID.Luigi, luigiPositon);
-            UpdateCharacters();
-        }
-
-
-        private void CheckForStop(CharacterID character, Point position)
-        {
-            foreach (Point stopPoint in pathPoints)
-            {
-                // Check if the character's position is within the vicinity of a stop point
-                if (Math.Abs(position.X - stopPoint.X) < 20 && Math.Abs(position.Y - stopPoint.Y) < 20)
-                {
-                    // Generate a random number, if it's divisible by 4, stop the character
-                    if (random.Next(1, 101) % 100 == 0)
-                    {
-                        // Stop the character by disabling its tick timer
-                        switch (character)
-                        {
-                            case CharacterID.Mario:
-                                Mariotick.Enabled = false;
-                                stopMario.Enabled = true;
-                                marioPointIndex++;
-                                break;
-                            case CharacterID.Luigi:
-                                LuigiTick.Enabled = false;
-                                stopMario.Enabled = true;
-                                luigiPointIndex++;
-                                break;
-                            case CharacterID.Bowser:
-                                BowserTick.Enabled = false;
-                                stopMario.Enabled = true;
-                                break;
-                            case CharacterID.Peach:
-                                PeachTick.Enabled = false;
-                                stopMario.Enabled = true;
-                                break;
-                        }
-
-                        if (!charactersStopping.Contains(character))
-                        {
-                            charactersStopping.Add(character);
-                        }
-                        break; // Break out of the loop once a stop point is found
-                    }
-                }
-            }
-        }
-
-        private void UpdateCharacters()
-        {
-            if (charactersStopping.Count == 4)
-            {
-                stopTimer.Start();
-            }
-        }
-
-
-        private void StartRace()
-        {
+            MoveKarts();
 
         }
-
-        private void tick_Tick(object sender, EventArgs e)
-        {
-            MarioCircuit();
-
-        }
-        private void LuigiTick_Tick(object sender, EventArgs e)
-        {
-            LuigiCircuit();
-        }
-        private void PeachTick_Tick(object sender, EventArgs e)
-        {
-            
-        }
-        private void BowserTick_Tick(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void btnStart_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnReset_Click(object sender, EventArgs e)
-        {
-
-        }
-
 
         private void frmGame_Load(object sender, EventArgs e)
         {
-            Mariotick.Enabled = true;
-            LuigiTick.Enabled = true;
-            PeachTick.Enabled = true;
-            BowserTick.Enabled = true;
+            GameTick.Enabled = true;
         }
-
+        
+        private void RenderCharacters()
+        {
+            spriteRenderer.RenderSprite(pbMario, CharacterID.Mario, 0);
+            pbMario.SizeMode = PictureBoxSizeMode.Zoom;
+            
+            spriteRenderer.RenderSprite(pbLuigi, CharacterID.Luigi, 0);
+            pbLuigi.SizeMode = PictureBoxSizeMode.Zoom;
+            
+            spriteRenderer.RenderSprite(pbPeach, CharacterID.Peach, 0);
+            pbPeach.SizeMode = PictureBoxSizeMode.Zoom;
+            
+            spriteRenderer.RenderSprite(pbBowser, CharacterID.Bowser, 0);
+            pbBowser.SizeMode = PictureBoxSizeMode.Zoom;
+        }
+        private void CreateCharacters()
+        {
+            kartImages.Add(pbMario);
+            kartImages.Add(pbLuigi);
+            kartImages.Add(pbPeach);
+            kartImages.Add(pbBowser);
+            
+            karts.Add(new Kart(CharacterID.Mario));
+            karts.Add(new Kart(CharacterID.Luigi));
+            karts.Add(new Kart(CharacterID.Peach));
+            karts.Add(new Kart(CharacterID.Bowser));
+        }
 
         private bool mouseDown;
         private Point lastLocation;
@@ -285,17 +137,6 @@ namespace HorseRacing
         private void GameView_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
-        }
-
-        private void stop_Tick(object sender, EventArgs e)
-        {
-            // Stop timer elapsed, reset characters' tick timers and clear character stopping list
-            Mariotick.Enabled = true;
-            LuigiTick.Enabled = true;
-            BowserTick.Enabled = true;
-            PeachTick.Enabled = true;
-            charactersStopping.Clear();
-            stopTimer.Stop();
         }
     }
 }

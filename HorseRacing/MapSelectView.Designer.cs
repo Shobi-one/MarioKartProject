@@ -83,7 +83,6 @@ namespace HorseRacing
             this.trackPicker.Size = new System.Drawing.Size(775, 281);
             this.trackPicker.TabIndex = 2;
             this.trackPicker.TabStop = false;
-            this.trackPicker.Enter += new System.EventHandler(this.trackPicker_Enter);
             // 
             // btnStart
             // 
@@ -189,7 +188,6 @@ namespace HorseRacing
             this.lblChoose.TabIndex = 3;
             this.lblChoose.Text = "Select Track";
             this.lblChoose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblChoose.Click += new System.EventHandler(this.lblChoose_Click);
             // 
             // btnBet
             // 
@@ -200,7 +198,6 @@ namespace HorseRacing
             this.btnBet.TabIndex = 8;
             this.btnBet.Text = "Bet";
             this.btnBet.UseVisualStyleBackColor = true;
-            this.btnBet.Click += new System.EventHandler(this.btnBet_Click);
             // 
             // MapSelectView
             // 

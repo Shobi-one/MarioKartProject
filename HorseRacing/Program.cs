@@ -7,9 +7,18 @@ using System.Windows.Forms;
 
 namespace HorseRacing
 {
+    public enum CharacterID
+    {
+        Mario,
+        Luigi,
+        Peach,
+        Bowser,
+        Null
+    }
+    
     static class Program
     {
-        static Game game;
+        public static Game CurrentGame { get; set; }
 
         /// <summary>
         /// The main entry point for the application.
@@ -18,10 +27,9 @@ namespace HorseRacing
         static void Main()
         {
             MoneyManager balance = new MoneyManager(100);
-            Game game = new Game(balance);
+            CurrentGame = new Game(balance);
 
-            Bitmap spriteSheet = Properties.Resources.spritesheet;
-            SpriteRenderer spriteRenderer = new SpriteRenderer(spriteSheet);
+            SpriteRenderer spriteRenderer = new SpriteRenderer();
 
 
             Application.EnableVisualStyles();

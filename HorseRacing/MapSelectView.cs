@@ -14,77 +14,50 @@ namespace HorseRacing
     public partial class MapSelectView : Form
     {
         private bool mouseDown;
-        private int RaceType;
         private double betAmount = 0;
 
-        private CharacterID selectedCharacter;
         private Point lastLocation;
 
         private Font customFontHeader = FontManager.LoadEmbeddedFont(16f);
         private Font customFontSelection = FontManager.LoadEmbeddedFont(8f);
         private SoundManager soundManager;
-        private bool betOn = true;
 
-        public MapSelectView(int raceType, double betAmount, CharacterID selectedCharacter)
+        public MapSelectView()
         {
             InitializeComponent();
+            
             soundManager = new SoundManager();
             soundManager.LoadSound("MenuMusic", "menu.wav", true);
             soundManager.PlaySound("MenuMusic");
-            this.RaceType = raceType;
-            this.betAmount = betAmount;
-            this.selectedCharacter = selectedCharacter;
-
-            if (selectedCharacter != CharacterID.Mario && selectedCharacter != CharacterID.Luigi && selectedCharacter != CharacterID.Peach && selectedCharacter != CharacterID.Bowser)
-            {
-                betOn = false;
-            }
-            else
-            {
-                betOn = true;
-            }
         }
 
         private void btnStart_Click(object sender, System.EventArgs e)
         {
-            if (!betOn)
-            {
-                MessageBox.Show("No bet has been placed. Please select a character and place a bet before starting the race.", "No Bet Placed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Bitmap track;
 
+            soundManager.StopSound("MenuMusic");
+            if (rdbMariocircuit.Checked)
+            {
+                track = Resources.mariocircuit_1;
+            }
+            else if (rdbChocoIsland.Checked)
+            {
+                track = Resources.chocoisland_1;
+            }
+            else if (rdbBowsersCastle.Checked)
+            {
+                track = Resources.bowsercastle_3;
             }
             else
             {
-                Bitmap track;
-
-                int characterID = (int)selectedCharacter;
-
-                soundManager.StopSound("MenuMusic");
-                if (rdbMariocircuit.Checked)
-                {
-                    track = Resources.mariocircuit_1;
-                }
-                else if (rdbChocoIsland.Checked)
-                {
-                    track = Resources.chocoisland_1;
-                }
-                else if (rdbBowsersCastle.Checked)
-                {
-                    track = Resources.bowsercastle_3;
-                }
-                else
-                {
-                    track = Resources.rainbowroad;
-                }
-
-                Race currentRace = RaceType == 0 ? new Race(track) : new GrandPrix();
-                currentRace.CharacterID = characterID;
-                currentRace.Bet = 0;
-
-
-                this.Hide();
-                new GameView(currentRace, RaceType).Show();
-
+                track = Resources.rainbowroad;
             }
+
+            Race race = new Race(track);
+            Program.CurrentGame.CurrentRace = race;
+
+            Hide();
+            new CharacterSelectView().Show();
         }
 
         private void pboxMarioCircuit_Click(object sender, System.EventArgs e)
@@ -116,7 +89,6 @@ namespace HorseRacing
             rdbRainbowRoad.Checked = true;
         }
 
-
         private void MapSelectView_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -137,47 +109,9 @@ namespace HorseRacing
             }
         }
 
-
         private void MapSelectView_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
-        }
-
-
-        private void trackPicker_Enter(object sender, System.EventArgs e)
-        {
-            //I have no idea whats going on. The code works, the game works. But there are chances that when trying to load into
-            //The font the program just flat out crashes. I cannot find a way to replicate the bug consistantly.
-            //Hell it doesn't even pick up the fail safe checks. I pray for the love of god this bug won't happen in the presentation...
-            Console.WriteLine("Entering trackPicker_Enter with bet on: " + selectedCharacter);
-
-            if (customFontHeader == null)
-            {
-                Console.WriteLine("customFontHeader is null");
-            }
-
-            if (customFontSelection == null)
-            {
-                Console.WriteLine("customFontSelection is null");
-            }
-
-            //lblChoose.Font = customFontHeader;
-            //rdbMariocircuit.Font = customFontSelection;
-            //rdbChocoIsland.Font = customFontSelection;
-            //rdbBowsersCastle.Font = customFontSelection;
-            //rdbRainbowRoad.Font = customFontSelection;
-        }
-
-        private void lblChoose_Click(object sender, System.EventArgs e)
-        {
-
-        }
-
-        private void btnBet_Click(object sender, EventArgs e)
-        {
-            CharacterSelectView characterSelectView = new CharacterSelectView(RaceType);
-            characterSelectView.Show();
-            this.Hide();
         }
     }
 }

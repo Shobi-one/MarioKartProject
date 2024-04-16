@@ -12,10 +12,11 @@ namespace HorseRacing
     {
         public MoneyManager Balance { get; set; }
         public List<Race> PreviousRaces { get; set; }
-
+        public Race CurrentRace { get; set; }
 
         public Game(MoneyManager balance)
         {
+            this.PreviousRaces = new List<Race>();
             this.Balance = balance;
         }
 

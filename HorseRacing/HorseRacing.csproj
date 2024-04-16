@@ -88,8 +88,7 @@
     </Compile>
     <Compile Include="Game.cs" />
     <Compile Include="FontManager.cs" />
-    <Compile Include="GrandPrix.cs" />
-    <Compile Include="Horse.cs" />
+    <Compile Include="Kart.cs" />
     <Compile Include="GameView.cs">
       <SubType>Form</SubType>
     </Compile>

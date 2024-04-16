@@ -4,24 +4,15 @@ using System.Windows.Forms;
 
 namespace HorseRacing
 {
-    public enum CharacterID
-    {
-        Mario,
-        Luigi,
-        Peach,
-        Bowser,
-        Null
-    }
-
     public class SpriteRenderer
     {
         private Bitmap spriteSheet;
         private int spritesPerCharacter = 12;
         private Point position;
 
-        public SpriteRenderer(Bitmap spriteSheet)
+        public SpriteRenderer()
         {
-            this.spriteSheet = spriteSheet;
+            this.spriteSheet = Properties.Resources.spritesheet;
             this.position = Point.Empty; // Initialize position to (0, 0)
         }
 
