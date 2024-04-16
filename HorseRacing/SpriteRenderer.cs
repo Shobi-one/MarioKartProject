@@ -9,7 +9,8 @@ namespace HorseRacing
         Mario,
         Luigi,
         Peach,
-        Bowser
+        Bowser,
+        Null
     }
 
     public class SpriteRenderer

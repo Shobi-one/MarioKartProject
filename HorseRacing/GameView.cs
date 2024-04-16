@@ -26,10 +26,8 @@ namespace HorseRacing
 
         private HashSet<Point> marioVisitedPoints = new HashSet<Point>();
         private HashSet<Point> luigiVisitedPoints = new HashSet<Point>();
-        private HashSet<Point> peachVisitedPoints = new HashSet<Point>();
-        private HashSet<Point> bowserVisitedPoints = new HashSet<Point>();
 
-        private int currentmarioPointIndex = 0;
+        private int marioPointIndex = 0;
         private int luigiPointIndex = 0;
 
         private int marioSpeed = 5;
@@ -78,7 +76,7 @@ namespace HorseRacing
             pathPoints.Add(new Point(903, 580));
 
 
-            targetPosition = mariopathPoints[currentmarioPointIndex];
+            targetPosition = mariopathPoints[marioPointIndex];
 
             this.BackgroundImage = raceType == 0 ? race.Track : tracks[raceType - 1];
             RenderCharacter(CharacterID.Mario, pbMario);
@@ -115,12 +113,12 @@ namespace HorseRacing
                 marioVisitedPoints.Add(targetPosition);
 
                 // Move to the next target position if available and not visited
-                for (int i = currentmarioPointIndex + 1; i < mariopathPoints.Count; i++)
+                for (int i = marioPointIndex + 1; i < mariopathPoints.Count; i++)
                 {
                     if (!marioVisitedPoints.Contains(mariopathPoints[i]))
                     {
-                        currentmarioPointIndex = i;
-                        targetPosition = mariopathPoints[currentmarioPointIndex];
+                        marioPointIndex = i;
+                        targetPosition = mariopathPoints[marioPointIndex];
                         break;
                     }
                 }
@@ -182,7 +180,7 @@ namespace HorseRacing
                             case CharacterID.Mario:
                                 Mariotick.Enabled = false;
                                 stopMario.Enabled = true;
-                                currentmarioPointIndex++;
+                                marioPointIndex++;
                                 break;
                             case CharacterID.Luigi:
                                 LuigiTick.Enabled = false;
