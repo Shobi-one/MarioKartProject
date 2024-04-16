@@ -10,7 +10,6 @@ namespace HorseRacing
     public class Race
     {
         public Bitmap Track { get; set; }
-        public List<Point> PathPoints { get; set; }
         public int CharacterID { get; set; }
         public int FirstPlace { get; set; }
         public int SecondPlace { get; set; }
@@ -20,14 +19,14 @@ namespace HorseRacing
 
         public Race() { }
 
-        public Race(Bitmap track, List<Point> pathPoints)
+        public Race(Bitmap track)
         {
             Track = track;
-            PathPoints = pathPoints;
             CharacterID = 0;
             FirstPlace = 0;
             Bet = 0;
         }
 
+        
     }
 }

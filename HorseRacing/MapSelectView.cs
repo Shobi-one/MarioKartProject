@@ -179,34 +179,5 @@ namespace HorseRacing
             characterSelectView.Show();
             this.Hide();
         }
-
-        private Race GetSelectedRace()
-        {
-            Bitmap track;
-            List<Point> pathPoints;
-
-            if (rdbMariocircuit.Checked)
-            {
-                track = Resources.mariocircuit_1;
-                pathPoints = new List<Point> { /* Define pathing points for Mario Circuit */ };
-            }
-            else if (rdbChocoIsland.Checked)
-            {
-                track = Resources.chocoisland_1;
-                pathPoints = new List<Point> { /* Define pathing points for Choco Island */ };
-            }
-            else if (rdbBowsersCastle.Checked)
-            {
-                track = Resources.bowsercastle_3;
-                pathPoints = new List<Point> { /* Define pathing points for Bowser's Castle */ };
-            }
-            else
-            {
-                track = Resources.rainbowroad;
-                pathPoints = new List<Point> { /* Define pathing points for Rainbow Road */ };
-            }
-
-            return new Race(track, pathPoints);
-        }
     }
 }
