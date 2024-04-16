@@ -15,7 +15,7 @@ namespace HorseRacing
     {
         private bool mouseDown;
         private int RaceType;
-        private double betAmount;
+        private double betAmount = 0;
 
         private CharacterID selectedCharacter;
         private Point lastLocation;
@@ -23,6 +23,7 @@ namespace HorseRacing
         private Font customFontHeader = FontManager.LoadEmbeddedFont(16f);
         private Font customFontSelection = FontManager.LoadEmbeddedFont(8f);
         private SoundManager soundManager;
+        private bool betOn = true;
 
         public MapSelectView(int raceType, double betAmount, CharacterID selectedCharacter)
         {
@@ -33,38 +34,57 @@ namespace HorseRacing
             this.RaceType = raceType;
             this.betAmount = betAmount;
             this.selectedCharacter = selectedCharacter;
+
+            if (selectedCharacter != CharacterID.Mario && selectedCharacter != CharacterID.Luigi && selectedCharacter != CharacterID.Peach && selectedCharacter != CharacterID.Bowser)
+            {
+                betOn = false;
+            }
+            else
+            {
+                betOn = true;
+            }
         }
 
         private void btnStart_Click(object sender, System.EventArgs e)
         {
-            Bitmap track;
+            if (!betOn)
+            {
+                MessageBox.Show("No bet has been placed. Please select a character and place a bet before starting the race.", "No Bet Placed", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            int characterID = (int)selectedCharacter;
-
-            soundManager.StopSound("MenuMusic");
-            if (rdbMariocircuit.Checked)
-            {
-                track = Resources.mariocircuit_1;
-            }
-            else if(rdbChocoIsland.Checked) 
-            {
-                track = Resources.chocoisland_1;
-            }
-            else if (rdbBowsersCastle.Checked)
-            {
-                track = Resources.bowsercastle_3;
             }
             else
             {
-                track = Resources.rainbowroad;
+                Bitmap track;
+
+                int characterID = (int)selectedCharacter;
+
+                soundManager.StopSound("MenuMusic");
+                if (rdbMariocircuit.Checked)
+                {
+                    track = Resources.mariocircuit_1;
+                }
+                else if (rdbChocoIsland.Checked)
+                {
+                    track = Resources.chocoisland_1;
+                }
+                else if (rdbBowsersCastle.Checked)
+                {
+                    track = Resources.bowsercastle_3;
+                }
+                else
+                {
+                    track = Resources.rainbowroad;
+                }
+
+                Race currentRace = RaceType == 0 ? new Race(track) : new GrandPrix();
+                currentRace.CharacterID = characterID;
+                currentRace.Bet = 0;
+
+
+                this.Hide();
+                new GameView(currentRace, RaceType).Show();
+
             }
-
-            Race currentRace = RaceType == 0 ? new Race(track) : new GrandPrix() ;
-            currentRace.CharacterID = characterID;
-            currentRace.Bet = 0;
-
-            this.Hide();
-            new GameView(currentRace, RaceType).Show();
         }
 
         private void pboxMarioCircuit_Click(object sender, System.EventArgs e)
@@ -95,8 +115,8 @@ namespace HorseRacing
             rdbBowsersCastle.Checked = false;
             rdbRainbowRoad.Checked = true;
         }
-        
-        
+
+
         private void MapSelectView_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -117,13 +137,13 @@ namespace HorseRacing
             }
         }
 
-        
+
         private void MapSelectView_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
         }
 
-        
+
         private void trackPicker_Enter(object sender, System.EventArgs e)
         {
             //I have no idea whats going on. The code works, the game works. But there are chances that when trying to load into
@@ -158,6 +178,35 @@ namespace HorseRacing
             CharacterSelectView characterSelectView = new CharacterSelectView(RaceType);
             characterSelectView.Show();
             this.Hide();
+        }
+
+        private Race GetSelectedRace()
+        {
+            Bitmap track;
+            List<Point> pathPoints;
+
+            if (rdbMariocircuit.Checked)
+            {
+                track = Resources.mariocircuit_1;
+                pathPoints = new List<Point> { /* Define pathing points for Mario Circuit */ };
+            }
+            else if (rdbChocoIsland.Checked)
+            {
+                track = Resources.chocoisland_1;
+                pathPoints = new List<Point> { /* Define pathing points for Choco Island */ };
+            }
+            else if (rdbBowsersCastle.Checked)
+            {
+                track = Resources.bowsercastle_3;
+                pathPoints = new List<Point> { /* Define pathing points for Bowser's Castle */ };
+            }
+            else
+            {
+                track = Resources.rainbowroad;
+                pathPoints = new List<Point> { /* Define pathing points for Rainbow Road */ };
+            }
+
+            return new Race(track, pathPoints);
         }
     }
 }

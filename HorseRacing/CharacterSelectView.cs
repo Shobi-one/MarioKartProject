@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using HorseRacing.Properties;
 
 namespace HorseRacing
 {
@@ -33,6 +34,11 @@ namespace HorseRacing
             RenderCharacter(CharacterID.Luigi, pboxBack2);
             RenderCharacter(CharacterID.Peach, pboxBack3);
             RenderCharacter(CharacterID.Bowser, pboxBack4);
+
+            pboxBack1.Location = new Point(68, 111);
+            pboxBack2.Location = new Point(236, 111);
+            pboxBack3.Location = new Point(404, 111);
+            pboxBack4.Location = new Point(571, 111);
         }
 
         private void Bet()
@@ -70,7 +76,7 @@ namespace HorseRacing
 
         private void CharacterSelectView_Load(object sender, EventArgs e)
         {
-            
+            lblMoneyText.Text += " " + moneyManager.Money; 
         }
 
         private void btnBet_Click(object sender, EventArgs e)

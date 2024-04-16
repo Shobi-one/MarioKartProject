@@ -21,10 +21,12 @@ namespace HorseRacing
         public static Horse GenerateHorse()
         {
             Random random = new Random();
-            string[] possibleNames = { "Thunder", "Fury", "Lightning", "Strike", "Storm", "Dancer", "Midnight", "Dreamer", "Starlight", "Express", "Moonbeam", "Runner", "Blaze", "Swift", "Shadow", "Spirit", "Fireball" }; // Sample horse names will get from a file in the future
+            string[] possibleNames = { "Thunder", "Fury", "Lightning", "Strike", "Storm", "Dancer", "Midnight", "Dreamer", "Starlight", "Express", "Moonbeam", 
+            "Runner", "Blaze", "Swift", "Shadow", "Spirit", "Fireball" }; // Sample horse names will get from a file in the future
             string name = possibleNames[random.Next(possibleNames.Length)];
             int speed = random.Next(5, 30);
             return new Horse(name, speed);
         }
     }
+
 }

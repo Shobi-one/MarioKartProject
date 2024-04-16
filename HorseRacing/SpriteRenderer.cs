@@ -16,10 +16,18 @@ namespace HorseRacing
     {
         private Bitmap spriteSheet;
         private int spritesPerCharacter = 12;
+        private Point position;
 
         public SpriteRenderer(Bitmap spriteSheet)
         {
             this.spriteSheet = spriteSheet;
+            this.position = Point.Empty; // Initialize position to (0, 0)
+        }
+
+        public Point Position
+        {
+            get { return position; }
+            set { position = value; }
         }
 
         public void RenderSprite(PictureBox pictureBox, CharacterID characterID, int spriteIndex)
@@ -56,6 +64,16 @@ namespace HorseRacing
 
             // Display the extracted sprite in the PictureBox
             pictureBox.Image = sprite;
+
+            // Set the position of the sprite
+            pictureBox.Location = position;
+            pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+        }
+
+        public void MoveToNextPoint(Point nextPoint)
+        {
+            // Move the sprite to the next point along the path
+            position = nextPoint;
         }
     }
 }

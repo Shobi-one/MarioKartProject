@@ -30,6 +30,7 @@ namespace HorseRacing
         private void InitializeComponent()
         {
             this.trackPicker = new System.Windows.Forms.GroupBox();
+            this.txtBetAmount = new System.Windows.Forms.TextBox();
             this.pboxBack4 = new System.Windows.Forms.PictureBox();
             this.pboxBack3 = new System.Windows.Forms.PictureBox();
             this.pboxBack2 = new System.Windows.Forms.PictureBox();
@@ -40,7 +41,7 @@ namespace HorseRacing
             this.pboxBack1 = new System.Windows.Forms.PictureBox();
             this.rdbMariocircuit = new System.Windows.Forms.RadioButton();
             this.lblChoose = new System.Windows.Forms.Label();
-            this.txtBetAmount = new System.Windows.Forms.TextBox();
+            this.lblMoneyText = new System.Windows.Forms.Label();
             this.trackPicker.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pboxBack4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxBack3)).BeginInit();
@@ -69,6 +70,13 @@ namespace HorseRacing
             this.trackPicker.Size = new System.Drawing.Size(775, 281);
             this.trackPicker.TabIndex = 3;
             this.trackPicker.TabStop = false;
+            // 
+            // txtBetAmount
+            // 
+            this.txtBetAmount.Location = new System.Drawing.Point(6, 56);
+            this.txtBetAmount.Name = "txtBetAmount";
+            this.txtBetAmount.Size = new System.Drawing.Size(100, 20);
+            this.txtBetAmount.TabIndex = 11;
             // 
             // pboxBack4
             // 
@@ -190,12 +198,14 @@ namespace HorseRacing
             this.lblChoose.Text = "Bet on Racer";
             this.lblChoose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // txtBetAmount
+            // lblMoneyText
             // 
-            this.txtBetAmount.Location = new System.Drawing.Point(6, 56);
-            this.txtBetAmount.Name = "txtBetAmount";
-            this.txtBetAmount.Size = new System.Drawing.Size(100, 20);
-            this.txtBetAmount.TabIndex = 11;
+            this.lblMoneyText.AutoSize = true;
+            this.lblMoneyText.Location = new System.Drawing.Point(642, 336);
+            this.lblMoneyText.Name = "lblMoneyText";
+            this.lblMoneyText.Size = new System.Drawing.Size(42, 13);
+            this.lblMoneyText.TabIndex = 9;
+            this.lblMoneyText.Text = "Money:";
             // 
             // CharacterSelectView
             // 
@@ -203,8 +213,11 @@ namespace HorseRacing
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::HorseRacing.Properties.Resources.background;
             this.ClientSize = new System.Drawing.Size(784, 361);
+            this.ControlBox = false;
+            this.Controls.Add(this.lblMoneyText);
             this.Controls.Add(this.lblChoose);
             this.Controls.Add(this.trackPicker);
+            this.MinimizeBox = false;
             this.Name = "CharacterSelectView";
             this.Text = "CharacterSelectView";
             this.Load += new System.EventHandler(this.CharacterSelectView_Load);
@@ -233,5 +246,6 @@ namespace HorseRacing
         private System.Windows.Forms.PictureBox pboxBack3;
         private System.Windows.Forms.PictureBox pboxBack2;
         private System.Windows.Forms.TextBox txtBetAmount;
+        private System.Windows.Forms.Label lblMoneyText;
     }
 }
