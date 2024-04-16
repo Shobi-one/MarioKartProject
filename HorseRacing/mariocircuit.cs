@@ -11,6 +11,14 @@ namespace HorseRacing
     {
         public mariocircuit() : base()
         {
+            StartingPositions = new List<Point>
+            {
+                new Point(910, 610),
+                new Point(940, 630),
+                new Point(910, 640),
+                new Point(940, 670),
+            };
+
             Path = new List<Point>
             {
                 new Point(935, 350),

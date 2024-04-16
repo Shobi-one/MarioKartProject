@@ -11,6 +11,14 @@ namespace HorseRacing
     {
         public bowsercastle() : base()
         {
+            StartingPositions = new List<Point>
+            {
+                new Point(900, 320),
+                new Point(930, 340),
+                new Point(900, 350),
+                new Point(930, 370),
+            };
+
             Path = new List<Point>
             {
                 new Point(900, 320),

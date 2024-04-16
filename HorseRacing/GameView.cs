@@ -28,6 +28,7 @@ namespace HorseRacing
             InitializeComponent();
         
             spriteRenderer = new SpriteRenderer();
+            BackgroundImage = CurrentRace.Track;
         
             RenderCharacters();
             CreateCharacters();

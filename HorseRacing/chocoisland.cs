@@ -11,6 +11,14 @@ namespace HorseRacing
     {
         public chocoisland() : base()
         {
+            StartingPositions = new List<Point>
+            {
+                new Point(860, 600),
+                new Point(900, 620),
+                new Point(860, 640),
+                new Point(900, 650),
+            };
+
             Path = new List<Point>
             {
                 new Point(866, 600),

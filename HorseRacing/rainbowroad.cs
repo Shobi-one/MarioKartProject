@@ -11,6 +11,14 @@ namespace HorseRacing
     {
         public rainbowroad() : base()
         {
+            StartingPositions = new List<Point>
+            {
+                new Point(60, 480),
+                new Point(30, 510),
+                new Point(60, 520),
+                new Point(30, 540),
+            };
+
             Path = new List<Point>
             {
                 new Point(66, 466),
