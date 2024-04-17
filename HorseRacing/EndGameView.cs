@@ -22,15 +22,15 @@ namespace HorseRacing
 
         public void standings()
         {
-            RenderCharacter(Race.FirstPlace, pboxBack1);
-            RenderCharacter(Race.SecondPlace, pboxBack2);
-            RenderCharacter(Race.ThirdPlace, pboxBack3);
-            RenderCharacter(Race.FourthPlace, pboxBack4);
-
-            if (race.SelectedCharacter == race.FirstPlace)
-            {
-                
-            }
+            // RenderCharacter(Race.FirstPlace, pboxBack1);
+            // RenderCharacter(Race.SecondPlace, pboxBack2);
+            // RenderCharacter(Race.ThirdPlace, pboxBack3);
+            // RenderCharacter(Race.FourthPlace, pboxBack4);
+            //
+            // if (race.SelectedCharacter == race.FirstPlace)
+            // {
+            //     
+            // }
         }
 
         private void RenderCharacter(CharacterID characterID, PictureBox pictureBox)
