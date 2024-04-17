@@ -18,16 +18,5 @@ namespace HorseRacing
         public CharacterID ThirdPlace { get; set; }
         public CharacterID FourthPlace { get; set; }
         public double Bet { get; set; }
-
-        public Race() { }
-
-        public Race(Bitmap track)
-        {
-            Track = track;
-            FirstPlace = 0;
-            Bet = 0;
-        }
-
-        
     }
 }

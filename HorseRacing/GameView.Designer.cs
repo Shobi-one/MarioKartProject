@@ -29,8 +29,6 @@ namespace HorseRacing
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.GameTick = new System.Windows.Forms.Timer(this.components);
             this.btnStart = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.lblY = new System.Windows.Forms.Label();
@@ -44,10 +42,6 @@ namespace HorseRacing
             ((System.ComponentModel.ISupportInitialize)(this.pbLuigi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBowser)).BeginInit();
             this.SuspendLayout();
-            // 
-            // GameTick
-            // 
-            this.GameTick.Tick += new System.EventHandler(this.GameTick_tick);
             // 
             // btnStart
             // 
@@ -143,10 +137,10 @@ namespace HorseRacing
             this.Controls.Add(this.lblY);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnStart);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "GameView";
             this.Text = "HorseGame";
-            this.Load += new System.EventHandler(this.frmGame_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.GameView_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.GameView_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.GameView_MouseUp);
@@ -159,7 +153,7 @@ namespace HorseRacing
         }
 
         #endregion
-        private System.Windows.Forms.Timer GameTick;
+
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Label lblY;

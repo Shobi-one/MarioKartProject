@@ -34,26 +34,30 @@ namespace HorseRacing
         private void btnStart_Click(object sender, System.EventArgs e)
         {
             Bitmap track;
+            Race race;
 
             soundManager.StopSound("MenuMusic");
             if (rdbMariocircuit.Checked)
             {
                 track = Resources.mariocircuit_1;
+                race = new mariocircuit();
             }
             else if (rdbChocoIsland.Checked)
             {
                 track = Resources.chocoisland_1;
+                race = new chocoisland();
             }
             else if (rdbBowsersCastle.Checked)
             {
                 track = Resources.bowsercastle_3;
+                race = new bowsercastle();
             }
             else
             {
                 track = Resources.rainbowroad;
+                race = new rainbowroad();
             }
-
-            Race race = new Race(track);
+            race.Track = track;
             Program.CurrentGame.CurrentRace = race;
 
             Hide();

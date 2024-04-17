@@ -12,81 +12,83 @@ namespace HorseRacing
     public partial class GameView : Form
     {
         private List<Kart> karts = new List<Kart>();
-        private List<PictureBox> kartImages = new List<PictureBox>();
+        private List<Timer> timers;   
+        private List<int> pathIndices;
+        private const int MovementSpeedMultiplier = 5;
+
         private Race CurrentRace
         {
             get { return Program.CurrentGame.CurrentRace; }
             set { Program.CurrentGame.CurrentRace = value; }
         }
-        
+
         private SpriteRenderer spriteRenderer;
-        
-        private int[] pointIndex = { 0, 0, 0, 0 };
-        
+
         public GameView()
         {
             InitializeComponent();
-        
-            spriteRenderer = new SpriteRenderer();
             BackgroundImage = CurrentRace.Track;
-        
+
             RenderCharacters();
             CreateCharacters();
+            InitializeAnimation();
         }
 
-        private void MoveKarts()
+        private void InitializeAnimation()
         {
-            foreach (Kart kart in karts)
+            pathIndices = new List<int> { 0, 0, 0, 0 };
+            timers = new List<Timer>();
+            for (int i = 0; i < karts.Count; i++)
             {
-                
+                Timer timer = new Timer();
+                timer.Interval = 10 * karts[i].Speed;
+                timer.Tick += AnimationTimer_Tick;
+                timer.Tag = i;
+                timer.Start();
+                timers.Add(timer);
             }
         }
-        
-        private void MoveKart()
-        {
-            // Calculate the distance and direction to the target position
-            //
-            // // Move Mario towards the target position
-            // marioPosition = new Point(
-            //     (int)(marioPosition.X + marioSpeed * directionX),
-            //     (int)(marioPosition.Y + marioSpeed * directionY)
-            // );
-            // pbMario.Location = marioPosition;
-            //
-            // // Check if Mario has reached the target position
-            // if (Math.Abs(marioPosition.X - targetPosition.X) < marioSpeed &&
-            //     Math.Abs(marioPosition.Y - targetPosition.Y) < marioSpeed)
-            // {
-            //     // Mark the current target position as visited
-            //     marioVisitedPoints.Add(targetPosition);
-            //
-            //     // Move to the next target position if available and not visited
-            //     for (int i = marioPointIndex + 1; i < mariopathPoints.Count; i++)
-            //     {
-            //         if (!marioVisitedPoints.Contains(mariopathPoints[i]))
-            //         {
-            //             marioPointIndex = i;
-            //             targetPosition = mariopathPoints[marioPointIndex];
-            //             break;
-            //         }
-            //     }
-            // }
-        }
-        
-        
-        private void GameTick_tick(object sender, EventArgs e)
-        {
-            MoveKarts();
 
+        private void AnimationTimer_Tick(object sender, EventArgs e)
+        {
+            Timer timer = (Timer)sender;
+            int kartIndex = (int)timer.Tag;
+            Kart kart = karts[kartIndex];
+            
+            // Calculate the distance to move based on the speed
+    
+            // Get the current and next point
+            Point currentPoint = kart.KartImage.Location;
+            Point nextPoint = kart.Path[(pathIndices[kartIndex] + 1) % kart.Path.Count];
+    
+            // Calculate the direction vector
+            PointF direction = new PointF(nextPoint.X - currentPoint.X, nextPoint.Y - currentPoint.Y);
+            float length = (float)Math.Sqrt(direction.X * direction.X + direction.Y * direction.Y);
+            if (length > 0)
+            {
+                direction.X /= length;
+                direction.Y /= length;
+            }
+    
+            // Move the PictureBox towards the next point
+            float distance = MovementSpeedMultiplier;
+            PointF newPosition = new PointF(currentPoint.X + direction.X * distance, currentPoint.Y + direction.Y * distance);
+    
+            // Check if the PictureBox has reached the next point
+            if (Math.Abs(newPosition.X - nextPoint.X) < Math.Abs(direction.X * distance) &&
+                Math.Abs(newPosition.Y - nextPoint.Y) < Math.Abs(direction.Y * distance))
+            {
+                newPosition = nextPoint;
+                pathIndices[kartIndex] = (pathIndices[kartIndex] + 1) % kart.Path.Count;
+            }
+    
+            // Update PictureBox location
+            kart.KartImage.Location = Point.Round(newPosition);
         }
 
-        private void frmGame_Load(object sender, EventArgs e)
-        {
-            GameTick.Enabled = true;
-        }
-        
         private void RenderCharacters()
         {
+            spriteRenderer = new SpriteRenderer();
             spriteRenderer.RenderSprite(pbMario, CharacterID.Mario, 0);
             pbMario.SizeMode = PictureBoxSizeMode.Zoom;
             
@@ -101,15 +103,20 @@ namespace HorseRacing
         }
         private void CreateCharacters()
         {
-            kartImages.Add(pbMario);
-            kartImages.Add(pbLuigi);
-            kartImages.Add(pbPeach);
-            kartImages.Add(pbBowser);
+            // Generates 4 random speeds for the karts
+            Random rand = new Random();
+            List<int> speeds = Enumerable.Range(3, 4).OrderBy(x => rand.Next()).ToList();
             
-            karts.Add(new Kart(CharacterID.Mario));
-            karts.Add(new Kart(CharacterID.Luigi));
-            karts.Add(new Kart(CharacterID.Peach));
-            karts.Add(new Kart(CharacterID.Bowser));
+            pbMario.Location = CurrentRace.StartingPositions[0];
+            pbLuigi.Location = CurrentRace.StartingPositions[1];
+            pbPeach.Location = CurrentRace.StartingPositions[2];
+            pbBowser.Location = CurrentRace.StartingPositions[3];
+            
+            karts.Add(new Kart(CharacterID.Mario, speeds[0], pbMario, CurrentRace.Path));
+            karts.Add(new Kart(CharacterID.Luigi, speeds[1], pbLuigi, CurrentRace.Path));
+            karts.Add(new Kart(CharacterID.Peach, speeds[2], pbPeach, CurrentRace.Path));
+            karts.Add(new Kart(CharacterID.Bowser, speeds[3], pbBowser, CurrentRace.Path));
+
         }
 
         private bool mouseDown;

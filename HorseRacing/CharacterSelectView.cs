@@ -54,12 +54,12 @@ namespace HorseRacing
                 }
                 else
                 {
-                    MessageBox.Show("Insufficient funds to place the bet.");
+                    MessageBox.Show(@"Insufficient funds to place the bet.");
                 }
             }
             else
             {
-                MessageBox.Show("Please enter a valid bet amount.");
+                MessageBox.Show(@"Please enter a valid bet amount.");
             }
         }
 

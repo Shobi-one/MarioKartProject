@@ -9,7 +9,7 @@ namespace HorseRacing
 {
     class chocoisland : Race 
     {
-        public chocoisland() : base()
+        public chocoisland()
         {
             StartingPositions = new List<Point>
             {

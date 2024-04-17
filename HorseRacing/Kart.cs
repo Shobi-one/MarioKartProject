@@ -14,12 +14,14 @@ namespace HorseRacing
         public CharacterID KartID { get; set; }
         public int Speed { get; set; }
         public List<Point> Path { get; set; }
+        public PictureBox KartImage { get; set; }
 
-        public Kart(CharacterID kartID)
+        public Kart(CharacterID kartID, int speed, PictureBox kartImage, List<Point> path)
         {
             KartID = kartID;
-            Speed = new Random().Next(3, 6);
-            Path = new List<Point>();
+            Speed = speed;
+            KartImage = kartImage;
+            Path = path;
         }
     }
 }

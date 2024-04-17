@@ -9,7 +9,7 @@ namespace HorseRacing
 {
     class rainbowroad : Race
     {
-        public rainbowroad() : base()
+        public rainbowroad()
         {
             StartingPositions = new List<Point>
             {

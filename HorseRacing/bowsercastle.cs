@@ -9,7 +9,7 @@ namespace HorseRacing
 {
     class bowsercastle : Race
     {
-        public bowsercastle() : base()
+        public bowsercastle()
         {
             StartingPositions = new List<Point>
             {
