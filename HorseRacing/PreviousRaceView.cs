@@ -12,19 +12,24 @@ namespace HorseRacing
 {
     public partial class PreviousRaceView : Form
     {
-        private Game _game;
+        private Game CurrentGame
+        {
+            get { return Program.CurrentGame; } 
+            set { Program.CurrentGame = value; }
+        }
+        
         private SpriteRenderer spriteRenderer;
 
-        public PreviousRaceView(Game game)
+        public PreviousRaceView()
         {
-            _game = game;
+            
             InitializeComponent();
             InitializeCustomPanels();
         }
 
         private void InitializeCustomPanels()
         {
-            if (_game.PreviousRaces == null || _game.PreviousRaces.Count == 0)
+            if (CurrentGame.PreviousRaces == null || CurrentGame.PreviousRaces.Count == 0)
             {
                 // Display a label saying no previous races found
                 Label noRacesLabel = new Label
@@ -43,7 +48,7 @@ namespace HorseRacing
             int horizontalSpacing = 5;
             int verticalSpacing = 20;
 
-            int numberOfRaces = _game.PreviousRaces.Count;
+            int numberOfRaces = CurrentGame.PreviousRaces.Count;
             this.AutoScroll = true;
 
             for (int raceIndex = 0; raceIndex < numberOfRaces; raceIndex++)
@@ -55,7 +60,7 @@ namespace HorseRacing
                     Size = new Size(panelWidth, panelHeight)
                 };
 
-                Race race = _game.PreviousRaces[raceIndex];
+                Race race = CurrentGame.PreviousRaces[raceIndex];
 
                 Label label = new Label
                 {

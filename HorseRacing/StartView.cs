@@ -13,7 +13,6 @@ namespace HorseRacing
     public partial class StartView : Form
     {
         private SoundManager soundManager;
-        private Game game;
 
         public StartView()
         {
@@ -63,8 +62,7 @@ namespace HorseRacing
 
         private void button1_Click(object sender, EventArgs e)
         {
-            PreviousRaceView previousRaceView = new PreviousRaceView(game); // Pass the game instance
-            previousRaceView.Show();
+            new PreviousRaceView().Show();
         }
     }
 }
