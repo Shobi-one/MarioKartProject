@@ -148,6 +148,7 @@ namespace HorseRacing
             lblX.Text = "X: " + e.X.ToString();
             lblY.Text = "Y: " + e.Y.ToString();
         }
+
         private void GameView_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;

@@ -24,7 +24,7 @@ namespace HorseRacing
                 new Point(866, 600),
                 new Point(866, 433),
                 new Point(700, 295),
-                new Point(830, 802),
+                new Point(820, 80),
                 new Point(583, 102),
                 new Point(398, 143),
                 new Point(335, 205),

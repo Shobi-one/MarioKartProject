@@ -21,20 +21,18 @@ namespace HorseRacing
 
             Path = new List<Point>
             {
-                new Point(66, 466),
                 new Point(70, 30),
                 new Point(766, 30),
-                new Point(735, 42),
-                new Point(300, 42),
-                new Point(300, 62),
-                new Point(300, 62),
-                new Point(950, 63),
-                new Point(950, 90),
-                new Point(490, 90),
-                new Point(440, 87),
-                new Point(220, 87),
-                new Point(171, 90),
-                new Point(70, 880),
+                new Point(735, 420),
+                new Point(300, 420),
+                new Point(300, 620),
+                new Point(950, 630),
+                new Point(950, 900),
+                new Point(490, 930),
+                new Point(440, 900),
+                new Point(220, 900),
+                new Point(171, 920),
+                new Point(70, 920),
                 new Point(66, 466)
             };
         }
