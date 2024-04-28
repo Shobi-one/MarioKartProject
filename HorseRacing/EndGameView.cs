@@ -56,6 +56,13 @@ namespace HorseRacing
                 Console.WriteLine($"{CurrentRace.FinishedCharacters[i].KartID} finished in {i + 1} place");
             }
             winCheck();
+            SaveFinishedRace();
+        }
+
+        private void SaveFinishedRace()
+        {
+            Program.CurrentGame.AddRace(CurrentRace);
+            Program.CurrentGame.CurrentRace = new Race();
         }
 
         private void RenderCharacter(CharacterID characterID, PictureBox pictureBox)
@@ -72,7 +79,9 @@ namespace HorseRacing
 
         private void btnMenu_Click(object sender, EventArgs e)
         {
-            new StartView();
+            StartView startView = new StartView();
+            startView.Show();
+            this.Close();
         }
     }
 }
