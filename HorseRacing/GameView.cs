@@ -60,6 +60,7 @@ namespace HorseRacing
             // Get the current and next point
             Point currentPoint = kart.KartImage.Location;
             Point nextPoint = kart.Path[(pathIndices[kartIndex] + 1) % kart.Path.Count];
+            //Console.WriteLine($"Kart {kartIndex}: Current Point = {currentPoint}, Next Point = {nextPoint}");
     
             // Calculate the direction vector
             PointF direction = new PointF(nextPoint.X - currentPoint.X, nextPoint.Y - currentPoint.Y);
@@ -80,6 +81,10 @@ namespace HorseRacing
             {
                 newPosition = nextPoint;
                 pathIndices[kartIndex] = (pathIndices[kartIndex] + 1) % kart.Path.Count;
+                if (kartIndex == 0)
+                {
+                Console.WriteLine($"Kart {kartIndex}: Reached next point, updated path index to {pathIndices[kartIndex]}.");
+                }
             }
     
             // Update PictureBox location
@@ -142,9 +147,26 @@ namespace HorseRacing
             lblX.Text = "X: " + e.X.ToString();
             lblY.Text = "Y: " + e.Y.ToString();
         }
+
         private void GameView_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
+        }
+
+        private void GameView_Paint_1(object sender, PaintEventArgs e)
+        {
+            for (int i = 0; i < CurrentRace.Path.Count; i++)
+            {
+                Point point = karts[0].Path[i];
+                // Console.WriteLine($"{i}: {point.ToString()}");
+                int dotSize = 10; // Adjust the size of the dot as needed
+                e.Graphics.FillEllipse(Brushes.White, point.X - dotSize / 2, point.Y - dotSize / 2, dotSize, dotSize);
+
+                // Draw the index number next to the dot
+                string indexText = (i + 1).ToString(); // Add 1 to the index to start from 1
+                Font font = new Font("Arial", 8); // Choose an appropriate font
+                e.Graphics.DrawString(indexText, font, Brushes.White, point.X + dotSize, point.Y);
+            }
         }
     }
 }

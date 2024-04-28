@@ -171,9 +171,13 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="assets\img\menu\charselectback.png" />
+    <Content Include="assets\img\menu\first.png" />
+    <Content Include="assets\img\menu\fourth.png" />
     <Content Include="assets\img\menu\logo.png" />
+    <Content Include="assets\img\menu\second.png" />
     <Content Include="assets\img\menu\selection.png" />
     <Content Include="assets\img\menu\start.png" />
+    <Content Include="assets\img\menu\third.png" />
     <Content Include="assets\sfx\bowser.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -141,6 +141,7 @@ namespace HorseRacing
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "GameView";
             this.Text = "HorseGame";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.GameView_Paint_1);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.GameView_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.GameView_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.GameView_MouseUp);
@@ -150,6 +151,7 @@ namespace HorseRacing
             ((System.ComponentModel.ISupportInitialize)(this.pbBowser)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion
