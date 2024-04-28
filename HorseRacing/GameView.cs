@@ -12,9 +12,9 @@ namespace HorseRacing
     public partial class GameView : Form
     {
         private List<Kart> karts = new List<Kart>();
-        private List<Timer> timers;   
         private List<int> pathIndices;
-        private const int MovementSpeedMultiplier = 5;
+        private int kartsStopped = 0;
+        private List<double> MovementSpeedMultiplier = new List<double>(){4.1, 4.25, 4.4, 4.55};
 
         private Race CurrentRace
         {
@@ -37,59 +37,65 @@ namespace HorseRacing
         private void InitializeAnimation()
         {
             pathIndices = new List<int> { -1, -1, -1, -1 };
-            timers = new List<Timer>();
-            for (int i = 0; i < karts.Count; i++)
-            {
-                Timer timer = new Timer();
-                timer.Interval = 10 * karts[i].Speed;
-                timer.Tick += AnimationTimer_Tick;
-                timer.Tag = i;
-                timer.Start();
-                timers.Add(timer);
-            }
+            Timer timer = new Timer();
+            timer.Interval = 10;
+            timer.Tick += AnimationTimer_Tick;
+            timer.Start();
         }
 
         private void AnimationTimer_Tick(object sender, EventArgs e)
         {
-            Timer timer = (Timer)sender;
-            int kartIndex = (int)timer.Tag;
-            Kart kart = karts[kartIndex];
-            PictureBox kartImage = kart.KartImage;
-            List<Point> path = kart.Path;
-
-            if (pathIndices[kartIndex] < path.Count - 1)
+            foreach (Kart kart in karts)
             {
-                // Get the current and next points in the path
-                Point currentPoint = kartImage.Location;
-                Point nextPoint = path[(pathIndices[kartIndex] + 1) % path.Count];
-
-                // Calculate the distance between the current point and the next point
-                double distance = Math.Sqrt(Math.Pow(nextPoint.X - currentPoint.X, 2) + Math.Pow(nextPoint.Y - currentPoint.Y, 2));
-
-                // Calculate the ratio of the MovementSpeedMultiplier to the distance
-                double ratio = MovementSpeedMultiplier / distance;
-
-                // Calculate the amount of movement along the x and y axes
-                int movementX = (int)((nextPoint.X - currentPoint.X) * ratio);
-                int movementY = (int)((nextPoint.Y - currentPoint.Y) * ratio);
-
-                // Add the movement to the current position of the kart to get the new position
-                Point newPosition = new Point(kartImage.Location.X + movementX, kartImage.Location.Y + movementY);
-
-                // Update the position of the kart
-                kartImage.Location = newPosition;
-
-                // If the kart has reached the next point, increment the path index for that kart
-                if (Math.Sqrt(Math.Pow(newPosition.X - nextPoint.X, 2) + Math.Pow(newPosition.Y - nextPoint.Y, 2)) < MovementSpeedMultiplier)
+                int kartIndex = (int)kart.KartID;
+                PictureBox kartImage = kart.KartImage;
+                List<Point> path = kart.Path;
+                
+                if (pathIndices[kartIndex] < path.Count - 1)
                 {
-                    pathIndices[kartIndex] = (pathIndices[kartIndex] + 1) % path.Count;
+                    // Get the current and next points in the path
+                    Point currentPoint = kartImage.Location;
+                    Point nextPoint = path[(pathIndices[kartIndex] + 1) % path.Count];
+
+                    // Calculate the distance between the current point and the next point
+                    double distance = Math.Sqrt(Math.Pow(nextPoint.X - currentPoint.X, 2) + Math.Pow(nextPoint.Y - currentPoint.Y, 2));
+
+                    // Calculate the ratio of the MovementSpeedMultiplier to the distance
+                    double ratio = kart.Speed / distance;
+
+                    // Calculate the amount of movement along the x and y axes
+                    int movementX = (int)((nextPoint.X - currentPoint.X) * ratio);
+                    int movementY = (int)((nextPoint.Y - currentPoint.Y) * ratio);
+
+                    // Add the movement to the current position of the kart to get the new position
+                    Point newPosition = new Point(kartImage.Location.X + movementX, kartImage.Location.Y + movementY);
+
+                    // Update the position of the kart
+                    kartImage.Location = newPosition;
+
+                    // If the kart has reached the next point, increment the path index for that kart
+                    if (Math.Sqrt(Math.Pow(newPosition.X - nextPoint.X, 2) + Math.Pow(newPosition.Y - nextPoint.Y, 2)) < kart.Speed)
+                    {
+                        pathIndices[kartIndex] = (pathIndices[kartIndex] + 1) % path.Count;
+                    }
+                }
+                else if (kartsStopped < 4 && kart.Speed > 0)
+                {
+                    kartsStopped++;
+                    kart.Speed = 0;
+                    CurrentRace.FinishedCharacters.Add(kart);
+                    EndRace();
+                }
+                else if (kartsStopped == 4)
+                {
+                    Timer timer = (Timer)sender;
+                    timer.Stop();
+                    timer.Dispose();
+                    
                 }
             }
-            else
-            {
-                timer.Stop();
-                timer.Dispose();
-            }
+
+            
         }
 
         private void RenderCharacters()
@@ -111,7 +117,11 @@ namespace HorseRacing
         {
             // Generates 4 random speeds for the karts
             Random rand = new Random();
-            List<int> speeds = Enumerable.Range(3, 4).OrderBy(x => rand.Next()).ToList();
+            List<double> speeds = MovementSpeedMultiplier.OrderBy(x => rand.Next()).ToList();
+            foreach (var speed in speeds)
+            {
+                Console.WriteLine(speed);
+            }
             
             pbMario.Location = CurrentRace.StartingPositions[0];
             pbLuigi.Location = CurrentRace.StartingPositions[1];
@@ -123,6 +133,12 @@ namespace HorseRacing
             karts.Add(new Kart(CharacterID.Peach, speeds[2], pbPeach, CurrentRace.Path));
             karts.Add(new Kart(CharacterID.Bowser, speeds[3], pbBowser, CurrentRace.Path));
 
+        }
+
+        private void EndRace()
+        {
+            new frmEndGameView().Show();
+            Hide();
         }
 
         private bool mouseDown;

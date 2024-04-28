@@ -13,10 +13,12 @@ namespace HorseRacing
         public List<Point> StartingPositions { get; set; }
         public List<Point> Path { get; set; }
         public CharacterID SelectedCharacter { get; set; }
-        public CharacterID FirstPlace { get; set; }
-        public CharacterID SecondPlace { get; set; }
-        public CharacterID ThirdPlace { get; set; }
-        public CharacterID FourthPlace { get; set; }
+        public List<Kart> FinishedCharacters { get; set; }
         public double Bet { get; set; }
+
+        public Race()
+        {
+            FinishedCharacters = new List<Kart>();
+        }
     }
 }

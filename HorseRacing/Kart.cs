@@ -12,11 +12,11 @@ namespace HorseRacing
     public class Kart
     {
         public CharacterID KartID { get; set; }
-        public int Speed { get; set; }
+        public double Speed { get; set; }
         public List<Point> Path { get; set; }
         public PictureBox KartImage { get; set; }
 
-        public Kart(CharacterID kartID, int speed, PictureBox kartImage, List<Point> path)
+        public Kart(CharacterID kartID, double speed, PictureBox kartImage, List<Point> path)
         {
             KartID = kartID;
             Speed = speed;

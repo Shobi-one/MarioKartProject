@@ -9,7 +9,7 @@ namespace HorseRacing
 {
     class mariocircuit :  Race
     {
-        public mariocircuit()
+        public mariocircuit() : base()
         {
             StartingPositions = new List<Point>
             {

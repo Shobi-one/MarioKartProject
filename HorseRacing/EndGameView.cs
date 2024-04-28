@@ -12,7 +12,12 @@ namespace HorseRacing
 {
     public partial class frmEndGameView : Form
     {
-        public Race race;
+        private Race CurrentRace
+        {
+            get { return Program.CurrentGame.CurrentRace; }
+            set { Program.CurrentGame.CurrentRace = value; }
+        }
+        
         private SpriteRenderer spriteRenderer;
         public frmEndGameView()
         {
@@ -22,15 +27,13 @@ namespace HorseRacing
 
         public void standings()
         {
-            // RenderCharacter(Race.FirstPlace, pboxBack1);
-            // RenderCharacter(Race.SecondPlace, pboxBack2);
-            // RenderCharacter(Race.ThirdPlace, pboxBack3);
-            // RenderCharacter(Race.FourthPlace, pboxBack4);
-            //
-            // if (race.SelectedCharacter == race.FirstPlace)
-            // {
-            //     
-            // }
+            for (int i = 0; i < CurrentRace.FinishedCharacters.Count; i++)
+            {
+                Console.WriteLine(CurrentRace.FinishedCharacters[i].KartID + " finished in " + i+1 + " place");
+                
+                // TODO: Implement rendering of characters in the correct order
+                // RenderCharacter(kart, pictureBox1);
+            }
         }
 
         private void RenderCharacter(CharacterID characterID, PictureBox pictureBox)
