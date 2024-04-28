@@ -23,7 +23,7 @@ namespace HorseRacing
         }
 
         private SpriteRenderer spriteRenderer;
-
+        
         public GameView()
         {
             InitializeComponent();
@@ -36,7 +36,7 @@ namespace HorseRacing
 
         private void InitializeAnimation()
         {
-            pathIndices = new List<int> { 0, 0, 0, 0 };
+            pathIndices = new List<int> { -1, -1, -1, -1 };
             timers = new List<Timer>();
             for (int i = 0; i < karts.Count; i++)
             {
@@ -54,36 +54,42 @@ namespace HorseRacing
             Timer timer = (Timer)sender;
             int kartIndex = (int)timer.Tag;
             Kart kart = karts[kartIndex];
-            
-            // Calculate the distance to move based on the speed
-    
-            // Get the current and next point
-            Point currentPoint = kart.KartImage.Location;
-            Point nextPoint = kart.Path[(pathIndices[kartIndex] + 1) % kart.Path.Count];
-    
-            // Calculate the direction vector
-            PointF direction = new PointF(nextPoint.X - currentPoint.X, nextPoint.Y - currentPoint.Y);
-            float length = (float)Math.Sqrt(direction.X * direction.X + direction.Y * direction.Y);
-            if (length > 0)
+            PictureBox kartImage = kart.KartImage;
+            List<Point> path = kart.Path;
+
+            if (pathIndices[kartIndex] < path.Count - 1)
             {
-                direction.X /= length;
-                direction.Y /= length;
+                // Get the current and next points in the path
+                Point currentPoint = kartImage.Location;
+                Point nextPoint = path[(pathIndices[kartIndex] + 1) % path.Count];
+
+                // Calculate the distance between the current point and the next point
+                double distance = Math.Sqrt(Math.Pow(nextPoint.X - currentPoint.X, 2) + Math.Pow(nextPoint.Y - currentPoint.Y, 2));
+
+                // Calculate the ratio of the MovementSpeedMultiplier to the distance
+                double ratio = MovementSpeedMultiplier / distance;
+
+                // Calculate the amount of movement along the x and y axes
+                int movementX = (int)((nextPoint.X - currentPoint.X) * ratio);
+                int movementY = (int)((nextPoint.Y - currentPoint.Y) * ratio);
+
+                // Add the movement to the current position of the kart to get the new position
+                Point newPosition = new Point(kartImage.Location.X + movementX, kartImage.Location.Y + movementY);
+
+                // Update the position of the kart
+                kartImage.Location = newPosition;
+
+                // If the kart has reached the next point, increment the path index for that kart
+                if (Math.Sqrt(Math.Pow(newPosition.X - nextPoint.X, 2) + Math.Pow(newPosition.Y - nextPoint.Y, 2)) < MovementSpeedMultiplier)
+                {
+                    pathIndices[kartIndex] = (pathIndices[kartIndex] + 1) % path.Count;
+                }
             }
-    
-            // Move the PictureBox towards the next point
-            float distance = MovementSpeedMultiplier;
-            PointF newPosition = new PointF(currentPoint.X + direction.X * distance, currentPoint.Y + direction.Y * distance);
-    
-            // Check if the PictureBox has reached the next point
-            if (Math.Abs(newPosition.X - nextPoint.X) < Math.Abs(direction.X * distance) &&
-                Math.Abs(newPosition.Y - nextPoint.Y) < Math.Abs(direction.Y * distance))
+            else
             {
-                newPosition = nextPoint;
-                pathIndices[kartIndex] = (pathIndices[kartIndex] + 1) % kart.Path.Count;
+                timer.Stop();
+                timer.Dispose();
             }
-    
-            // Update PictureBox location
-            kart.KartImage.Location = Point.Round(newPosition);
         }
 
         private void RenderCharacters()
@@ -145,6 +151,22 @@ namespace HorseRacing
         private void GameView_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
+        }
+
+        private void GameView_Paint(object sender, PaintEventArgs e)
+        {
+            for (int i = 0; i < CurrentRace.Path.Count; i++)
+            {
+                Point point = karts[0].Path[i];
+                // Console.WriteLine($"{i}: {point.ToString()}");
+                int dotSize = 10; // Adjust the size of the dot as needed
+                e.Graphics.FillEllipse(Brushes.Red, point.X - dotSize / 2, point.Y - dotSize / 2, dotSize, dotSize);
+                
+                // Draw the index number next to the dot
+                string indexText = (i + 1).ToString(); // Add 1 to the index to start from 1
+                Font font = new Font("Arial", 8); // Choose an appropriate font
+                e.Graphics.DrawString(indexText, font, Brushes.Red, point.X + dotSize, point.Y);
+            }
         }
     }
 }
