@@ -14,7 +14,9 @@ namespace HorseRacing
         private List<Kart> karts = new List<Kart>();
         private List<int> pathIndices;
         private int kartsStopped = 0;
-        private List<double> MovementSpeedMultiplier = new List<double>(){4.1, 4.25, 4.4, 4.55};
+        private bool raceStopped;
+        private List<double> MovementSpeedMultiplier = new List<double>() { 4.1, 4.25, 4.4, 4.55 };
+        private SoundManager soundManager;
 
         private Race CurrentRace
         {
@@ -23,12 +25,12 @@ namespace HorseRacing
         }
 
         private SpriteRenderer spriteRenderer;
-        
+
         public GameView()
         {
             InitializeComponent();
+            soundManager = new SoundManager();
             BackgroundImage = CurrentRace.Track;
-
             RenderCharacters();
             CreateCharacters();
             InitializeAnimation();
@@ -50,7 +52,7 @@ namespace HorseRacing
                 int kartIndex = (int)kart.KartID;
                 PictureBox kartImage = kart.KartImage;
                 List<Point> path = kart.Path;
-                
+
                 if (pathIndices[kartIndex] < path.Count - 1)
                 {
                     // Get the current and next points in the path
@@ -84,18 +86,20 @@ namespace HorseRacing
                     kartsStopped++;
                     kart.Speed = 0;
                     CurrentRace.FinishedCharacters.Add(kart);
-                    EndRace();
                 }
                 else if (kartsStopped == 4)
                 {
                     Timer timer = (Timer)sender;
                     timer.Stop();
                     timer.Dispose();
-                    
+                    raceStopped = true;
                 }
             }
 
-            
+            if (raceStopped)
+            {
+                EndRace();
+            }
         }
 
         private void RenderCharacters()
@@ -103,13 +107,13 @@ namespace HorseRacing
             spriteRenderer = new SpriteRenderer();
             spriteRenderer.RenderSprite(pbMario, CharacterID.Mario, 0);
             pbMario.SizeMode = PictureBoxSizeMode.Zoom;
-            
+
             spriteRenderer.RenderSprite(pbLuigi, CharacterID.Luigi, 0);
             pbLuigi.SizeMode = PictureBoxSizeMode.Zoom;
-            
+
             spriteRenderer.RenderSprite(pbPeach, CharacterID.Peach, 0);
             pbPeach.SizeMode = PictureBoxSizeMode.Zoom;
-            
+
             spriteRenderer.RenderSprite(pbBowser, CharacterID.Bowser, 0);
             pbBowser.SizeMode = PictureBoxSizeMode.Zoom;
         }
@@ -122,12 +126,12 @@ namespace HorseRacing
             {
                 Console.WriteLine(speed);
             }
-            
+
             pbMario.Location = CurrentRace.StartingPositions[0];
             pbLuigi.Location = CurrentRace.StartingPositions[1];
             pbPeach.Location = CurrentRace.StartingPositions[2];
             pbBowser.Location = CurrentRace.StartingPositions[3];
-            
+
             karts.Add(new Kart(CharacterID.Mario, speeds[0], pbMario, CurrentRace.Path));
             karts.Add(new Kart(CharacterID.Luigi, speeds[1], pbLuigi, CurrentRace.Path));
             karts.Add(new Kart(CharacterID.Peach, speeds[2], pbPeach, CurrentRace.Path));
@@ -178,7 +182,7 @@ namespace HorseRacing
                 // Console.WriteLine($"{i}: {point.ToString()}");
                 int dotSize = 10; // Adjust the size of the dot as needed
                 e.Graphics.FillEllipse(Brushes.Red, point.X - dotSize / 2, point.Y - dotSize / 2, dotSize, dotSize);
-                
+
                 // Draw the index number next to the dot
                 string indexText = (i + 1).ToString(); // Add 1 to the index to start from 1
                 Font font = new Font("Arial", 8); // Choose an appropriate font

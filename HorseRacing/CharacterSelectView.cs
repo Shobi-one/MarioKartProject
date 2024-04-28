@@ -93,5 +93,37 @@ namespace HorseRacing
             selectedCharacter = CharacterID.Bowser;
 
         }
+
+        private void pboxBack1_Click(object sender, EventArgs e)
+        {
+            rdbMariocircuit.Checked = true;
+            rdbChocoIsland.Checked = false;
+            rdbBowsersCastle.Checked = false;
+            rdbRainbowRoad.Checked = false;
+        }
+
+        private void pboxBack2_Click(object sender, EventArgs e)
+        {
+            rdbMariocircuit.Checked = false;
+            rdbChocoIsland.Checked = true;
+            rdbBowsersCastle.Checked = false;
+            rdbRainbowRoad.Checked = false;
+        }
+
+        private void pboxBack3_Click(object sender, EventArgs e)
+        {
+            rdbMariocircuit.Checked = false;
+            rdbChocoIsland.Checked = false;
+            rdbBowsersCastle.Checked = true;
+            rdbRainbowRoad.Checked = false;
+        }
+
+        private void pboxBack4_Click(object sender, EventArgs e)
+        {
+            rdbMariocircuit.Checked = false;
+            rdbChocoIsland.Checked = false;
+            rdbBowsersCastle.Checked = false;
+            rdbRainbowRoad.Checked = true;
+        }
     }
 }

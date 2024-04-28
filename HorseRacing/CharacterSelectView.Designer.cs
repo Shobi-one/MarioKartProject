@@ -53,11 +53,12 @@ namespace HorseRacing
             // 
             this.trackPicker.BackColor = System.Drawing.Color.Transparent;
             this.trackPicker.BackgroundImage = global::HorseRacing.Properties.Resources.selection;
+            this.trackPicker.Controls.Add(this.lblMoneyText);
             this.trackPicker.Controls.Add(this.txtBetAmount);
             this.trackPicker.Controls.Add(this.pboxBack4);
             this.trackPicker.Controls.Add(this.pboxBack3);
-            this.trackPicker.Controls.Add(this.pboxBack2);
             this.trackPicker.Controls.Add(this.btnBet);
+            this.trackPicker.Controls.Add(this.pboxBack2);
             this.trackPicker.Controls.Add(this.rdbRainbowRoad);
             this.trackPicker.Controls.Add(this.rdbBowsersCastle);
             this.trackPicker.Controls.Add(this.rdbChocoIsland);
@@ -73,7 +74,7 @@ namespace HorseRacing
             // 
             // txtBetAmount
             // 
-            this.txtBetAmount.Location = new System.Drawing.Point(6, 56);
+            this.txtBetAmount.Location = new System.Drawing.Point(298, 58);
             this.txtBetAmount.Name = "txtBetAmount";
             this.txtBetAmount.Size = new System.Drawing.Size(100, 20);
             this.txtBetAmount.TabIndex = 11;
@@ -88,6 +89,7 @@ namespace HorseRacing
             this.pboxBack4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pboxBack4.TabIndex = 10;
             this.pboxBack4.TabStop = false;
+            this.pboxBack4.Click += new System.EventHandler(this.pboxBack4_Click);
             // 
             // pboxBack3
             // 
@@ -99,6 +101,7 @@ namespace HorseRacing
             this.pboxBack3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pboxBack3.TabIndex = 9;
             this.pboxBack3.TabStop = false;
+            this.pboxBack3.Click += new System.EventHandler(this.pboxBack3_Click);
             // 
             // pboxBack2
             // 
@@ -110,11 +113,12 @@ namespace HorseRacing
             this.pboxBack2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pboxBack2.TabIndex = 8;
             this.pboxBack2.TabStop = false;
+            this.pboxBack2.Click += new System.EventHandler(this.pboxBack2_Click);
             // 
             // btnBet
             // 
             this.btnBet.BackgroundImage = global::HorseRacing.Properties.Resources.background;
-            this.btnBet.Location = new System.Drawing.Point(112, 55);
+            this.btnBet.Location = new System.Drawing.Point(404, 56);
             this.btnBet.Name = "btnBet";
             this.btnBet.Size = new System.Drawing.Size(75, 23);
             this.btnBet.TabIndex = 3;
@@ -171,6 +175,7 @@ namespace HorseRacing
             this.pboxBack1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pboxBack1.TabIndex = 0;
             this.pboxBack1.TabStop = false;
+            this.pboxBack1.Click += new System.EventHandler(this.pboxBack1_Click);
             // 
             // rdbMariocircuit
             // 
@@ -201,7 +206,7 @@ namespace HorseRacing
             // lblMoneyText
             // 
             this.lblMoneyText.AutoSize = true;
-            this.lblMoneyText.Location = new System.Drawing.Point(642, 336);
+            this.lblMoneyText.Location = new System.Drawing.Point(6, 63);
             this.lblMoneyText.Name = "lblMoneyText";
             this.lblMoneyText.Size = new System.Drawing.Size(42, 13);
             this.lblMoneyText.TabIndex = 9;
@@ -214,7 +219,6 @@ namespace HorseRacing
             this.BackgroundImage = global::HorseRacing.Properties.Resources.background;
             this.ClientSize = new System.Drawing.Size(784, 361);
             this.ControlBox = false;
-            this.Controls.Add(this.lblMoneyText);
             this.Controls.Add(this.lblChoose);
             this.Controls.Add(this.trackPicker);
             this.MinimizeBox = false;

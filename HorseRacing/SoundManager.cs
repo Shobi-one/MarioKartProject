@@ -18,7 +18,7 @@ namespace HorseRacing
             soundPlayers = new Dictionary<string, SoundPlayer>();
         }
 
-        public void LoadSound(string soundName, string fileName, bool loopable)
+        public void LoadSound(string soundName, string fileName, bool loopable, bool playImmediately = false)
         {
             string songFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"assets\sfx\" + fileName);
             if (!soundPlayers.ContainsKey(soundName))
@@ -30,7 +30,12 @@ namespace HorseRacing
                     {
                         ((SoundPlayer)sender).PlayLooping();
                     }
+                    if (playImmediately && !loopable)
+                    {
+                        ((SoundPlayer)sender).Play();
+                    }
                 };
+                player.LoadAsync();  // Ensure you are loading asynchronously
                 soundPlayers.Add(soundName, player);
             }
         }

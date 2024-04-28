@@ -15,6 +15,7 @@ namespace HorseRacing
         public CharacterID SelectedCharacter { get; set; }
         public List<Kart> FinishedCharacters { get; set; }
         public double Bet { get; set; }
+        public int Rotation { get; set; }
 
         public Race()
         {

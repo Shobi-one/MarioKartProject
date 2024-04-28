@@ -23,16 +23,21 @@ namespace HorseRacing
         {
             InitializeComponent();
             spriteRenderer = new SpriteRenderer();
+            standings();
+            pbFirst.Location = new Point(68, 111);
+            pbSecond.Location = new Point(236, 111);
+            pbThird.Location = new Point(404, 111);
+            pbFourth.Location = new Point(571, 111);
         }
 
         public void standings()
         {
-            for (int i = 0; i < CurrentRace.FinishedCharacters.Count; i++)
+            var pictureBoxes = new List<PictureBox> { pbFirst, pbSecond, pbThird, pbFourth };
+
+            for (int i = 0; i < CurrentRace.FinishedCharacters.Count && i < pictureBoxes.Count; i++)
             {
-                Console.WriteLine(CurrentRace.FinishedCharacters[i].KartID + " finished in " + i+1 + " place");
-                
-                // TODO: Implement rendering of characters in the correct order
-                // RenderCharacter(kart, pictureBox1);
+                RenderCharacter(CurrentRace.FinishedCharacters[i].KartID, pictureBoxes[i]);
+                Console.WriteLine($"{CurrentRace.FinishedCharacters[i].KartID} finished in {i + 1} place");
             }
         }
 
@@ -43,14 +48,14 @@ namespace HorseRacing
             pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
         }
 
-        private void lblChoose_Click(object sender, EventArgs e)
+        private void btnQuit_Click(object sender, EventArgs e)
         {
-
+            Application.Exit();
         }
 
-        private void trackPicker_Enter(object sender, EventArgs e)
+        private void btnMenu_Click(object sender, EventArgs e)
         {
-
+            new StartView();
         }
     }
 }

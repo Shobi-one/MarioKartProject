@@ -30,38 +30,42 @@ namespace HorseRacing
         private void InitializeComponent()
         {
             this.trackPicker = new System.Windows.Forms.GroupBox();
+            this.pb4 = new System.Windows.Forms.PictureBox();
+            this.pb3 = new System.Windows.Forms.PictureBox();
+            this.pb2 = new System.Windows.Forms.PictureBox();
+            this.pb1 = new System.Windows.Forms.PictureBox();
+            this.pbFourth = new System.Windows.Forms.PictureBox();
+            this.pbThird = new System.Windows.Forms.PictureBox();
+            this.pbSecond = new System.Windows.Forms.PictureBox();
             this.pbFirst = new System.Windows.Forms.PictureBox();
-            this.pboxBack4 = new System.Windows.Forms.PictureBox();
-            this.pboxBack3 = new System.Windows.Forms.PictureBox();
-            this.pboxBack2 = new System.Windows.Forms.PictureBox();
-            this.pboxBack1 = new System.Windows.Forms.PictureBox();
             this.lblWinner = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.btnQuit = new System.Windows.Forms.Button();
+            this.btnMenu = new System.Windows.Forms.Button();
             this.trackPicker.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFourth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbThird)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSecond)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFirst)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pboxBack4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pboxBack3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pboxBack2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pboxBack1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // trackPicker
             // 
             this.trackPicker.BackColor = System.Drawing.Color.Transparent;
             this.trackPicker.BackgroundImage = global::HorseRacing.Properties.Resources.selection;
-            this.trackPicker.Controls.Add(this.pictureBox3);
-            this.trackPicker.Controls.Add(this.pictureBox2);
-            this.trackPicker.Controls.Add(this.pictureBox1);
+            this.trackPicker.Controls.Add(this.btnMenu);
+            this.trackPicker.Controls.Add(this.btnQuit);
+            this.trackPicker.Controls.Add(this.pb4);
+            this.trackPicker.Controls.Add(this.pb3);
+            this.trackPicker.Controls.Add(this.pb2);
+            this.trackPicker.Controls.Add(this.pb1);
+            this.trackPicker.Controls.Add(this.pbFourth);
+            this.trackPicker.Controls.Add(this.pbThird);
+            this.trackPicker.Controls.Add(this.pbSecond);
             this.trackPicker.Controls.Add(this.pbFirst);
-            this.trackPicker.Controls.Add(this.pboxBack4);
-            this.trackPicker.Controls.Add(this.pboxBack3);
-            this.trackPicker.Controls.Add(this.pboxBack2);
-            this.trackPicker.Controls.Add(this.pboxBack1);
             this.trackPicker.Cursor = System.Windows.Forms.Cursors.Cross;
             this.trackPicker.ForeColor = System.Drawing.Color.Transparent;
             this.trackPicker.Location = new System.Drawing.Point(5, 49);
@@ -69,60 +73,86 @@ namespace HorseRacing
             this.trackPicker.Size = new System.Drawing.Size(775, 281);
             this.trackPicker.TabIndex = 9;
             this.trackPicker.TabStop = false;
-            this.trackPicker.Enter += new System.EventHandler(this.trackPicker_Enter);
+            // 
+            // pb4
+            // 
+            this.pb4.Image = global::HorseRacing.Properties.Resources.fourth;
+            this.pb4.Location = new System.Drawing.Point(666, 210);
+            this.pb4.Name = "pb4";
+            this.pb4.Size = new System.Drawing.Size(65, 65);
+            this.pb4.TabIndex = 14;
+            this.pb4.TabStop = false;
+            // 
+            // pb3
+            // 
+            this.pb3.Image = global::HorseRacing.Properties.Resources.third;
+            this.pb3.Location = new System.Drawing.Point(501, 211);
+            this.pb3.Name = "pb3";
+            this.pb3.Size = new System.Drawing.Size(65, 65);
+            this.pb3.TabIndex = 13;
+            this.pb3.TabStop = false;
+            // 
+            // pb2
+            // 
+            this.pb2.Image = global::HorseRacing.Properties.Resources.second;
+            this.pb2.Location = new System.Drawing.Point(334, 211);
+            this.pb2.Name = "pb2";
+            this.pb2.Size = new System.Drawing.Size(65, 65);
+            this.pb2.TabIndex = 12;
+            this.pb2.TabStop = false;
+            // 
+            // pb1
+            // 
+            this.pb1.Image = global::HorseRacing.Properties.Resources.first;
+            this.pb1.Location = new System.Drawing.Point(165, 210);
+            this.pb1.Name = "pb1";
+            this.pb1.Size = new System.Drawing.Size(65, 65);
+            this.pb1.TabIndex = 11;
+            this.pb1.TabStop = false;
+            // 
+            // pbFourth
+            // 
+            this.pbFourth.BackgroundImage = global::HorseRacing.Properties.Resources.charselectback;
+            this.pbFourth.Image = global::HorseRacing.Properties.Resources.charselectback;
+            this.pbFourth.Location = new System.Drawing.Point(571, 111);
+            this.pbFourth.Name = "pbFourth";
+            this.pbFourth.Size = new System.Drawing.Size(150, 150);
+            this.pbFourth.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbFourth.TabIndex = 10;
+            this.pbFourth.TabStop = false;
+            // 
+            // pbThird
+            // 
+            this.pbThird.BackgroundImage = global::HorseRacing.Properties.Resources.charselectback;
+            this.pbThird.Image = global::HorseRacing.Properties.Resources.charselectback;
+            this.pbThird.Location = new System.Drawing.Point(404, 111);
+            this.pbThird.Name = "pbThird";
+            this.pbThird.Size = new System.Drawing.Size(150, 150);
+            this.pbThird.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbThird.TabIndex = 9;
+            this.pbThird.TabStop = false;
+            // 
+            // pbSecond
+            // 
+            this.pbSecond.BackgroundImage = global::HorseRacing.Properties.Resources.charselectback;
+            this.pbSecond.Image = global::HorseRacing.Properties.Resources.charselectback;
+            this.pbSecond.Location = new System.Drawing.Point(236, 111);
+            this.pbSecond.Name = "pbSecond";
+            this.pbSecond.Size = new System.Drawing.Size(150, 150);
+            this.pbSecond.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbSecond.TabIndex = 8;
+            this.pbSecond.TabStop = false;
             // 
             // pbFirst
             // 
-            this.pbFirst.Image = global::HorseRacing.Properties.Resources.first;
-            this.pbFirst.Location = new System.Drawing.Point(165, 210);
+            this.pbFirst.BackgroundImage = global::HorseRacing.Properties.Resources.charselectback;
+            this.pbFirst.Image = global::HorseRacing.Properties.Resources.charselectback;
+            this.pbFirst.Location = new System.Drawing.Point(68, 111);
             this.pbFirst.Name = "pbFirst";
-            this.pbFirst.Size = new System.Drawing.Size(65, 65);
-            this.pbFirst.TabIndex = 11;
+            this.pbFirst.Size = new System.Drawing.Size(150, 150);
+            this.pbFirst.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbFirst.TabIndex = 0;
             this.pbFirst.TabStop = false;
-            // 
-            // pboxBack4
-            // 
-            this.pboxBack4.BackgroundImage = global::HorseRacing.Properties.Resources.charselectback;
-            this.pboxBack4.Image = global::HorseRacing.Properties.Resources.charselectback;
-            this.pboxBack4.Location = new System.Drawing.Point(571, 111);
-            this.pboxBack4.Name = "pboxBack4";
-            this.pboxBack4.Size = new System.Drawing.Size(150, 150);
-            this.pboxBack4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pboxBack4.TabIndex = 10;
-            this.pboxBack4.TabStop = false;
-            // 
-            // pboxBack3
-            // 
-            this.pboxBack3.BackgroundImage = global::HorseRacing.Properties.Resources.charselectback;
-            this.pboxBack3.Image = global::HorseRacing.Properties.Resources.charselectback;
-            this.pboxBack3.Location = new System.Drawing.Point(404, 111);
-            this.pboxBack3.Name = "pboxBack3";
-            this.pboxBack3.Size = new System.Drawing.Size(150, 150);
-            this.pboxBack3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pboxBack3.TabIndex = 9;
-            this.pboxBack3.TabStop = false;
-            // 
-            // pboxBack2
-            // 
-            this.pboxBack2.BackgroundImage = global::HorseRacing.Properties.Resources.charselectback;
-            this.pboxBack2.Image = global::HorseRacing.Properties.Resources.charselectback;
-            this.pboxBack2.Location = new System.Drawing.Point(236, 111);
-            this.pboxBack2.Name = "pboxBack2";
-            this.pboxBack2.Size = new System.Drawing.Size(150, 150);
-            this.pboxBack2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pboxBack2.TabIndex = 8;
-            this.pboxBack2.TabStop = false;
-            // 
-            // pboxBack1
-            // 
-            this.pboxBack1.BackgroundImage = global::HorseRacing.Properties.Resources.charselectback;
-            this.pboxBack1.Image = global::HorseRacing.Properties.Resources.charselectback;
-            this.pboxBack1.Location = new System.Drawing.Point(68, 111);
-            this.pboxBack1.Name = "pboxBack1";
-            this.pboxBack1.Size = new System.Drawing.Size(150, 150);
-            this.pboxBack1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pboxBack1.TabIndex = 0;
-            this.pboxBack1.TabStop = false;
             // 
             // lblWinner
             // 
@@ -136,34 +166,28 @@ namespace HorseRacing
             this.lblWinner.TabIndex = 10;
             this.lblWinner.Text = "Winners";
             this.lblWinner.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblWinner.Click += new System.EventHandler(this.lblChoose_Click);
             // 
-            // pictureBox1
+            // btnQuit
             // 
-            this.pictureBox1.Image = global::HorseRacing.Properties.Resources.second;
-            this.pictureBox1.Location = new System.Drawing.Point(334, 211);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(65, 65);
-            this.pictureBox1.TabIndex = 12;
-            this.pictureBox1.TabStop = false;
+            this.btnQuit.BackgroundImage = global::HorseRacing.Properties.Resources.background;
+            this.btnQuit.Location = new System.Drawing.Point(696, 79);
+            this.btnQuit.Name = "btnQuit";
+            this.btnQuit.Size = new System.Drawing.Size(75, 23);
+            this.btnQuit.TabIndex = 15;
+            this.btnQuit.Text = "Quit";
+            this.btnQuit.UseVisualStyleBackColor = true;
+            this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
             // 
-            // pictureBox2
+            // btnMenu
             // 
-            this.pictureBox2.Image = global::HorseRacing.Properties.Resources.third;
-            this.pictureBox2.Location = new System.Drawing.Point(501, 211);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(65, 65);
-            this.pictureBox2.TabIndex = 13;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::HorseRacing.Properties.Resources.fourth;
-            this.pictureBox3.Location = new System.Drawing.Point(666, 210);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(65, 65);
-            this.pictureBox3.TabIndex = 14;
-            this.pictureBox3.TabStop = false;
+            this.btnMenu.BackgroundImage = global::HorseRacing.Properties.Resources.background;
+            this.btnMenu.Location = new System.Drawing.Point(696, 54);
+            this.btnMenu.Name = "btnMenu";
+            this.btnMenu.Size = new System.Drawing.Size(75, 23);
+            this.btnMenu.TabIndex = 16;
+            this.btnMenu.Text = "Menu";
+            this.btnMenu.UseVisualStyleBackColor = true;
+            this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click);
             // 
             // frmEndGameView
             // 
@@ -176,14 +200,14 @@ namespace HorseRacing
             this.Name = "frmEndGameView";
             this.Text = "End Game View";
             this.trackPicker.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pb4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFourth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbThird)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSecond)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFirst)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pboxBack4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pboxBack3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pboxBack2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pboxBack1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -192,14 +216,16 @@ namespace HorseRacing
         #endregion
 
         private System.Windows.Forms.GroupBox trackPicker;
-        private System.Windows.Forms.PictureBox pboxBack4;
-        private System.Windows.Forms.PictureBox pboxBack3;
-        private System.Windows.Forms.PictureBox pboxBack2;
-        private System.Windows.Forms.PictureBox pboxBack1;
-        private System.Windows.Forms.Label lblWinner;
+        private System.Windows.Forms.PictureBox pbFourth;
+        private System.Windows.Forms.PictureBox pbThird;
+        private System.Windows.Forms.PictureBox pbSecond;
         private System.Windows.Forms.PictureBox pbFirst;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblWinner;
+        private System.Windows.Forms.PictureBox pb1;
+        private System.Windows.Forms.PictureBox pb4;
+        private System.Windows.Forms.PictureBox pb3;
+        private System.Windows.Forms.PictureBox pb2;
+        private System.Windows.Forms.Button btnMenu;
+        private System.Windows.Forms.Button btnQuit;
     }
 }
