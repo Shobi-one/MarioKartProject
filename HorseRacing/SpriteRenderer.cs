@@ -61,11 +61,5 @@ namespace HorseRacing
             pictureBox.Location = position;
             pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
         }
-
-        public void MoveToNextPoint(Point nextPoint)
-        {
-            // Move the sprite to the next point along the path
-            position = nextPoint;
-        }
     }
 }
