@@ -14,8 +14,6 @@ namespace HorseRacing
     public partial class MapSelectView : Form
     {
         private bool mouseDown;
-        private double betAmount = 0;
-
         private Point lastLocation;
 
         private Font customFontHeader = FontManager.LoadEmbeddedFont(16f);

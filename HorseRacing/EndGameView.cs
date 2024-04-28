@@ -24,10 +24,26 @@ namespace HorseRacing
             InitializeComponent();
             spriteRenderer = new SpriteRenderer();
             standings();
+
             pbFirst.Location = new Point(68, 111);
             pbSecond.Location = new Point(236, 111);
             pbThird.Location = new Point(404, 111);
             pbFourth.Location = new Point(571, 111);
+        }
+
+        public void winCheck()
+        {
+            var winner = CurrentRace.FinishedCharacters[0].KartID;
+            if (CurrentRace.SelectedCharacter == winner)
+            {
+                Program.CurrentGame.Balance.AddMoney(CurrentRace.Bet * 2);
+                MessageBox.Show($"Congratulations! You won {CurrentRace.Bet * 2}!");
+            }
+            else
+            {
+                Program.CurrentGame.Balance.DeductMoney(CurrentRace.Bet);
+                MessageBox.Show($"You lost! The bet amount {CurrentRace.Bet} has been deducted from your balance.");
+            }
         }
 
         public void standings()
@@ -39,6 +55,7 @@ namespace HorseRacing
                 RenderCharacter(CurrentRace.FinishedCharacters[i].KartID, pictureBoxes[i]);
                 Console.WriteLine($"{CurrentRace.FinishedCharacters[i].KartID} finished in {i + 1} place");
             }
+            winCheck();
         }
 
         private void RenderCharacter(CharacterID characterID, PictureBox pictureBox)
