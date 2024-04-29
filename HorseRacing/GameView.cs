@@ -136,7 +136,6 @@ namespace HorseRacing
             karts.Add(new Kart(CharacterID.Luigi, speeds[1], pbLuigi, CurrentRace.Path));
             karts.Add(new Kart(CharacterID.Peach, speeds[2], pbPeach, CurrentRace.Path));
             karts.Add(new Kart(CharacterID.Bowser, speeds[3], pbBowser, CurrentRace.Path));
-
         }
 
         private void EndRace()
@@ -176,18 +175,18 @@ namespace HorseRacing
 
         private void GameView_Paint(object sender, PaintEventArgs e)
         {
-            for (int i = 0; i < CurrentRace.Path.Count; i++)
-            {
-                Point point = karts[0].Path[i];
-                // Console.WriteLine($"{i}: {point.ToString()}");
-                int dotSize = 10; // Adjust the size of the dot as needed
-                e.Graphics.FillEllipse(Brushes.Red, point.X - dotSize / 2, point.Y - dotSize / 2, dotSize, dotSize);
-
-                // Draw the index number next to the dot
-                string indexText = (i + 1).ToString(); // Add 1 to the index to start from 1
-                Font font = new Font("Arial", 8); // Choose an appropriate font
-                e.Graphics.DrawString(indexText, font, Brushes.Red, point.X + dotSize, point.Y);
-            }
+        // for (int i = 0; i < CurrentRace.Path.Count; i++)
+        // {
+        //     Point point = karts[0].Path[i];
+        //     // Console.WriteLine($"{i}: {point.ToString()}");
+        //     int dotSize = 10; // Adjust the size of the dot as needed
+        //     e.Graphics.FillEllipse(Brushes.Red, point.X - dotSize / 2, point.Y - dotSize / 2, dotSize, dotSize);
+        //
+        //     // Draw the index number next to the dot
+        //     string indexText = (i + 1).ToString(); // Add 1 to the index to start from 1
+        //     Font font = new Font("Arial", 8); // Choose an appropriate font
+        //     e.Graphics.DrawString(indexText, font, Brushes.Red, point.X + dotSize, point.Y);
+        // }
         }
     }
 }

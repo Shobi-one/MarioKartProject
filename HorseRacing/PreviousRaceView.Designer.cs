@@ -37,10 +37,10 @@ namespace HorseRacing
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::HorseRacing.Properties.Resources.background;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PreviousRaceView";
             this.Text = "Previous Races";
             this.ResumeLayout(false);
-
         }
 
         #endregion
