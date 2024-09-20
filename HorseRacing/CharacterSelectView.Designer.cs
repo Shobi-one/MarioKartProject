@@ -211,6 +211,7 @@ namespace HorseRacing
             this.lblChoose.TabIndex = 8;
             this.lblChoose.Text = "Bet on Racer";
             this.lblChoose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblChoose.Click += new System.EventHandler(this.lblChoose_Click);
             // 
             // CharacterSelectView
             // 
@@ -235,6 +236,7 @@ namespace HorseRacing
             ((System.ComponentModel.ISupportInitialize)(this.pboxBack1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion

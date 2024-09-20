@@ -125,5 +125,10 @@ namespace HorseRacing
             rdbBowsersCastle.Checked = false;
             rdbRainbowRoad.Checked = true;
         }
+
+        private void lblChoose_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
